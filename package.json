@@ -1,0 +1,16 @@
+{
+  "name": "block5d-backend",
+  "version": "1.0.0",
+  "description": "Server side for block5d web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/block5dsingapore/block5d-backend.git"
+  },
+  "author": "NUS ISS",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/block5dsingapore/block5d-backend#readme"
+}
