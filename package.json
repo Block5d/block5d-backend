@@ -12,5 +12,26 @@
   },
   "author": "NUS ISS",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/block5dsingapore/block5d-backend#readme"
+  "homepage": "https://bitbucket.org/block5dsingapore/block5d-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^8.0.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.31",
+    "mongoskin": "^2.1.0",
+    "q": "^1.5.0",
+    "request": "^2.81.0",
+    "rootpath": "^0.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "jest": "^21.1.0",
+    "superagent": "^3.6.0",
+    "supertest": "^3.0.0"
+  }
 }
