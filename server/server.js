@@ -23,6 +23,8 @@ app.use(csurf({ cookie : true}));
 
 var port = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000;
 
+require("./routes")(app);
+
 app.use(function(err, req, res, next){
     if(err.code !== 'EBADCSRFTOKEN') return next(err)
     logger.debug("app use");

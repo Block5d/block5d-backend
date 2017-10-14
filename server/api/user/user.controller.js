@@ -11,7 +11,8 @@ exports.register = function(req, res) {
 
 exports.list = function (req, res) {
     logger.debug ("list user ...");
-    res.status(200).json({});
+    var users = [ { first_name: "", last_name: ""}]
+    res.status(200).json(users);
 };
 
 exports.resetPassword = function (req, res) {

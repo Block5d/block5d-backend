@@ -9,16 +9,12 @@ let bunyanlogger = bunyan.createLogger({
     name: 'block5d-backend',
     streams: [
         {
-            level: 'info',
-            stream: process.stdout,
-        },
-        {
             level: 'debug',
             stream: process.stdout,
         },
         {
             level: 'error',
-            path: process.env.ERROR_LOG
+            path: process.env.ERROR_LOG || "./logs/app-error.log"
         }
     ]
 });
