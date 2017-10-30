@@ -1,54 +1,58 @@
 var config = require("../../config");
 var logger = require("../../util/logger");
 
-exports.get = function (req, res) {
+var SqlDatabase = require('../../sqldatabase');
+
+exports.getAll = function (req, res) {
     logger.debug ("get user");
+    var users = [ { first_name: "", last_name: ""}]
+    res.status(200).json(users);
 }
 
 exports.register = function(req, res) {
     logger.debug ("register user");
 };
 
-exports.list = function (req, res) {
+exports.create = function (req, res) {
     logger.debug ("list user ...");
     var users = [ { first_name: "", last_name: ""}]
     res.status(200).json(users);
 };
 
-exports.resetPassword = function (req, res) {
+exports.getOne = function (req, res) {
     logger.debug ("reset password");
 };
 
-exports.changePassword = function (req, res) {
+exports.update = function (req, res) {
     logger.debug ("change password");
 };
 
-exports.profile = function (req, res) {
+exports.delete = function (req, res) {
     logger.debug ("profile");
 };
 
-exports.profileToken = function (req, res) {
+exports.count = function (req, res) {
     logger.debug ("profile token");
 };
 
 
-exports.changePasswdToken = function (req, res) {
+exports.isExist = function (req, res) {
     logger.debug ("change passoword token");
 };
 
-exports.profiles = function (req, res) {
+exports.relationship = function (req, res) {
     logger.debug ("profiles");
 };
 
-exports.create = function (req, res) {
+exports.dyamicSql = function (req, res) {
     logger.debug ("create");
 };
 
-exports.update = function (req, res) {
+exports.describe = function (req, res) {
     logger.debug ("update");
 };
 
-exports.remove = function (req, res) {
+exports.tables = function (req, res) {
     logger.debug ("remove");
 };
 

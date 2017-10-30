@@ -16,6 +16,7 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/block5dsingapore/block5d-backend#readme",
   "dependencies": {
+    "async": "^2.5.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.1",
     "bunyan": "^1.8.12",
@@ -27,11 +28,13 @@
     "firebase-admin": "^5.4.2",
     "helmet": "^3.8.2",
     "lodash": "^4.17.4",
-    "mongodb": "^2.2.31",
+    "mongodb": "^2.2.33",
     "mongoskin": "^2.1.0",
+    "mysql2": "^1.4.2",
     "q": "^1.5.0",
     "request": "^2.81.0",
-    "rootpath": "^0.1.2"
+    "rootpath": "^0.1.2",
+    "sequelize": "^4.20.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
