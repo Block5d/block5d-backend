@@ -85,4 +85,8 @@ module.exports = function(app) {
     app.get(API_MONGODB_URI_DESCRIBE, isAuthenticated, MongoDBController.describe);
     app.get(API_MONGODB_URI_TABLES, isAuthenticated, MongoDBController.tables);
     
+    app.use(function(req, res) {
+        res.send("<h1>!!!! Page not found ! ! !</h1>");
+    });
+    
 }
