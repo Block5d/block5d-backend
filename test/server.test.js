@@ -1,6 +1,6 @@
 "use strict";
 const request = require('supertest');
-const app = require('../server/server');
+const app = require('./server/server');
 
 /* test root path */
 describe('Test the root path', function() {
