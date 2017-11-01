@@ -1,7 +1,7 @@
 "use strict";
 const request = require('supertest');
-const app = require('./server/server');
-
+const app = require('../server/app.js');
+console.log(app);
 /* test root path */
 describe('Test the root path', function() {
     test('It should response the GET method', function() {

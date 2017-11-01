@@ -3,7 +3,7 @@
  * @author Kenneth Phang
  */
 'use strict';
-const admin = require.main.require('firebase-admin');
+const admin = require('firebase-admin');
 
 const logger = require('./util/logger');
 const config = require('./config');
