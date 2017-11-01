@@ -5,6 +5,7 @@ module.exports = {
     authentication_enable: false,
     mongodb: process.env.MONGODB_URL || "mongodb://nusiss:password1234@ds029456.mlab.com:29456/judgeformdb",
     sqldb: process.env.SQLDB_URL || "mysql://root:password1234@localhost/yummylicious?reconnect=true",
+    database: 'employees',
     sql_seed: false,
     port: process.env.PORT
 }
