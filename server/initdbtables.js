@@ -13,26 +13,29 @@ const connection = mysql.createConnection({
   password: 'password1234',
   database: 'employees'
 });
-
-// simple query
-connection.query(
-  'show tables',
-  function(err, results, fields) {
-    console.log(results); // results contains rows returned by server
-    console.log(fields); // fields contains extra meta data about results, if available
-    var tables = [];
-    results.forEach(function(element, idx) {
-        console.log(element);
-        if(element)
-            tables.push(element[`Tables_in_${config.database}`]);
-    }, this);
-    jsonfile.writeFile(tablefile, tables, function (err) {
-        console.error(err)
-        if(!err){
-            console.log("no error" + fs.existsSync("./tables.json"));
-            process.exit();
-        }
-    });
-  }
-);
-
+console.log(connection);
+if(connection){
+    // simple query
+    connection.query(
+    'show tables',
+    function(err, results, fields) {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results, if available
+      var tables = [];
+      results.forEach(function(element, idx) {
+          console.log(element);
+          if(element)
+              tables.push(element[`Tables_in_${config.database}`]);
+      }, this);
+      jsonfile.writeFile(tablefile, tables, function (err) {
+          console.error(err)
+          if(!err){
+              console.log("no error" + fs.existsSync("./tables.json"));
+              process.exit();
+          }
+      });
+    }
+  );
+  
+  
+}
