@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm install; node server/server.js",
     "esdoc": "./node_modules/.bin/esdoc",
-    "test": "jest"
+    "test": "jest --coverage --forceexit"
   },
   "repository": {
     "type": "git",
