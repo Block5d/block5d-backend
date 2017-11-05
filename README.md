@@ -1,6 +1,13 @@
+#### Allowed `<type>`
+* feat (feature)
+* fix (bug fix)
+* docs (documentation)
+* style (formatting, missing semi colons, …)
+* refactor
+* test (when adding missing tests)
+* chore (maintain)
+
 # README #
-Sarah
-cherylyigi
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
