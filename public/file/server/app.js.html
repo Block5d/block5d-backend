@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">server/config/development.js | block5d-backend</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">server/app.js | block5d-backend</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -33,18 +33,41 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">server/config/development.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
-const domain_name = &quot;http://localhost:3000&quot;;
-module.exports = {
-    domain_name: domain_name,
-    authentication_enable: false,
-    mongodb: process.env.MONGODB_URL || &quot;mongodb://nusiss:password1234@ds029456.mlab.com:29456/judgeformdb&quot;,
-    sqldb: process.env.SQLDB_URL || &quot;mysql://root:password1234@localhost/yummylicious?reconnect=true&quot;,
-    database: &apos;employees&apos;,
-    sql_seed: false,
-    port: process.env.PORT
-}</code></pre>
+<div class="content" data-ice="content"><h1 data-ice="title">server/app.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&quot;use strict&quot;;
+var express = require(&apos;express&apos;);
+var cors = require(&apos;cors&apos;);
+var bodyParser = require(&apos;body-parser&apos;);
+var cookieParser = require(&apos;cookie-parser&apos;)
+var compression = require(&apos;compression&apos;)
+var cors = require(&quot;cors&quot;);
+var helmet = require(&quot;helmet&quot;);
+var csurf = require(&quot;csurf&quot;);
+var logger = require(&quot;./util/logger&quot;);
+const routes = require(&quot;./routes&quot;);
+var app = express();
+
+app.use(compression());
+app.use(helmet());
+
+app.disable(&apos;x-power-by&apos;);
+app.use(cors({optionSuccessStatus: 200}));
+app.use(bodyParser.urlencoded({limit: &apos;50mb&apos;, extended: true}));
+app.use(bodyParser.json({limit: &apos;50mb&apos;}));
+app.use(cookieParser())
+app.use(csurf({ cookie : true}));
+
+routes.init(app);
+routes.errorHandler(app);
+
+app.use(function(err, req, res, next){
+    if(err.code !== &apos;EBADCSRFTOKEN&apos;) return next(err)
+    logger.debug(&quot;app use&quot;);
+    res.status(403);
+    res.send(&apos;ERROR CSURF !&apos;);
+});
+
+module.exports = app;</code></pre>
 
 </div>
 

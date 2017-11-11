@@ -8,7 +8,7 @@ var cors = require("cors");
 var helmet = require("helmet");
 var csurf = require("csurf");
 var logger = require("./util/logger");
-
+const routes = require("./routes");
 var app = express();
 
 app.use(compression());
@@ -21,8 +21,8 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(cookieParser())
 app.use(csurf({ cookie : true}));
 
-
-require("./routes")(app);
+routes.init(app);
+routes.errorHandler(app);
 
 app.use(function(err, req, res, next){
     if(err.code !== 'EBADCSRFTOKEN') return next(err)

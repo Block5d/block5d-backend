@@ -8,18 +8,18 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "preinstall": "node server/initdbtables.js",
+    "preinstall": "",
     "start": "npm install; node server/server.js",
     "esdoc": "./node_modules/.bin/esdoc",
     "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/block5dsingapore/block5d-backend.git"
+    "url": "https://github.com/Block5d/block5d-backend.git"
   },
   "author": "NUS ISS",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/block5dsingapore/block5d-backend#readme",
+  "homepage": "https://github.com/Block5d/block5d-backend/blob/master/README.md",
   "dependencies": {
     "async": "^2.5.0",
     "bcryptjs": "^2.4.3",
@@ -29,6 +29,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "csurf": "^1.9.0",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "firebase-admin": "^5.4.2",
     "helmet": "^3.8.2",

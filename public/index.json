@@ -566,79 +566,45 @@
   {
     "__docId__": 48,
     "kind": "file",
-    "name": "server/authentication.js",
-    "content": "",
+    "name": "server/api/mongodb/mongodb.controller.js",
+    "content": "var config = require(\"../../config\");\r\nvar logger = require(\"../../util/logger\");\r\n\r\nvar MongoDatabase = require('../../mongohelper');\r\n\r\nexports.getAll = function (req, res) {\r\n    logger.debug (\"get user\");\r\n}\r\n\r\nexports.register = function(req, res) {\r\n    logger.debug (\"register user\");\r\n};\r\n\r\nexports.create = function (req, res) {\r\n    logger.debug (\"list user ...\");\r\n    var users = [ { first_name: \"\", last_name: \"\"}]\r\n    res.status(200).json(users);\r\n};\r\n\r\nexports.getOne = function (req, res) {\r\n    logger.debug (\"reset password\");\r\n};\r\n\r\nexports.update = function (req, res) {\r\n    logger.debug (\"change password\");\r\n};\r\n\r\nexports.delete = function (req, res) {\r\n    logger.debug (\"profile\");\r\n};\r\n\r\nexports.count = function (req, res) {\r\n    logger.debug (\"profile token\");\r\n};\r\n\r\n\r\nexports.isExist = function (req, res) {\r\n    logger.debug (\"change passoword token\");\r\n};\r\n\r\nexports.relationship = function (req, res) {\r\n    logger.debug (\"profiles\");\r\n};\r\n\r\nexports.dyamicNoSql = function (req, res) {\r\n    logger.debug (\"create\");\r\n};\r\n\r\nexports.describe = function (req, res) {\r\n    logger.debug (\"update\");\r\n};\r\n\r\nexports.tables = function (req, res) {\r\n    logger.debug (\"remove\");\r\n};\r\n\r\n\r\nfunction handleErr(res) {\r\n    handleErr(res, null);\r\n}\r\n\r\n\r\nfunction handleErr(res, err) {\r\n    console.log(err);\r\n    res\r\n        .status(500)\r\n        .json({\r\n            error: true\r\n        });\r\n}\r\n\r\nfunction handler404(res) {\r\n    res\r\n        .status(404)\r\n        .json({message: \"User not found!\"});\r\n}\r\n\r\nfunction returnResults(results, res) {\r\n    res.send(results);\r\n}",
     "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/authentication.js",
+    "longname": "D:/Projects/block5d/block5d-backend/server/api/mongodb/mongodb.controller.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
     "__docId__": 49,
-    "kind": "file",
-    "name": "server/config/development.js",
-    "content": "",
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
     "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/config/development.js",
+    "longname": "server/api/mongodb/mongodb.controller.js~config",
     "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
     "description": null,
-    "lineNumber": 1
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
   },
   {
     "__docId__": 50,
-    "kind": "file",
-    "name": "server/config/index.js",
-    "content": "",
-    "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/config/index.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 51,
-    "kind": "file",
-    "name": "server/mongohelper.js",
-    "content": "",
-    "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/mongohelper.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 52,
-    "kind": "file",
-    "name": "server/production.js",
-    "content": "",
-    "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/production.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 53,
-    "kind": "file",
-    "name": "server/server.js",
-    "content": "\"use strict\";\nvar express = require('express');\nvar cors = require('cors');\nvar bodyParser = require('body-parser');\nvar compression = require('compression')\n\nvar app = express();\n\napp.use(compression())\napp.disable('x-power-by');\napp.use(cors({optionSuccessStatus: 200}));\n\napp.use(bodyParser.urlencoded({limit: '50mb', extended: true}));\napp.use(bodyParser.json({limit: '50mb'}));\n\nvar port = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000;\nvar server = app.listen(port, function(){\n    console.log(\"Server listening on port \" + port);\n});\n\nmodule.exports = app;",
-    "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/server.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 54,
     "kind": "variable",
-    "name": "express",
-    "memberof": "server/server.js",
+    "name": "logger",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
     "static": true,
-    "longname": "server/server.js~express",
+    "longname": "server/api/mongodb/mongodb.controller.js~logger",
     "access": "public",
     "export": false,
-    "importPath": "block5d-backend/server/server.js",
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 2,
@@ -651,36 +617,15 @@
     "ignore": true
   },
   {
-    "__docId__": 55,
+    "__docId__": 51,
     "kind": "variable",
-    "name": "cors",
-    "memberof": "server/server.js",
+    "name": "MongoDatabase",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
     "static": true,
-    "longname": "server/server.js~cors",
+    "longname": "server/api/mongodb/mongodb.controller.js~MongoDatabase",
     "access": "public",
     "export": false,
-    "importPath": "block5d-backend/server/server.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 56,
-    "kind": "variable",
-    "name": "bodyParser",
-    "memberof": "server/server.js",
-    "static": true,
-    "longname": "server/server.js~bodyParser",
-    "access": "public",
-    "export": false,
-    "importPath": "block5d-backend/server/server.js",
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 4,
@@ -693,15 +638,1247 @@
     "ignore": true
   },
   {
-    "__docId__": 57,
-    "kind": "variable",
-    "name": "compression",
-    "memberof": "server/server.js",
+    "__docId__": 52,
+    "kind": "function",
+    "name": "getAll",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
     "static": true,
-    "longname": "server/server.js~compression",
+    "longname": "server/api/mongodb/mongodb.controller.js~getAll",
     "access": "public",
     "export": false,
-    "importPath": "block5d-backend/server/server.js",
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "register",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~register",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "name": "create",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~create",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "getOne",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~getOne",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "name": "update",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~update",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "delete",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~delete",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "count",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~count",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "isExist",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~isExist",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "function",
+    "name": "relationship",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~relationship",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "dyamicNoSql",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~dyamicNoSql",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 45,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "function",
+    "name": "describe",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~describe",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "function",
+    "name": "tables",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~tables",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "function",
+    "name": "handleErr",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~handleErr",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "function",
+    "name": "handleErr",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~handleErr",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "err",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
+    "name": "handler404",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~handler404",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 72,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "function",
+    "name": "returnResults",
+    "memberof": "server/api/mongodb/mongodb.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/mongodb/mongodb.controller.js~returnResults",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/mongodb/mongodb.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 78,
+    "undocument": true,
+    "params": [
+      {
+        "name": "results",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "file",
+    "name": "server/api/sql/seed.js",
+    "content": "var config = require(\"../../config\");\r\n\r\nmodule.exports = function() {\r\n    if (config.sql_seed) {\r\n\r\n    }\r\n};",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/api/sql/seed.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 69,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/api/sql/seed.js",
+    "static": true,
+    "longname": "server/api/sql/seed.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "function",
+    "name": "exports",
+    "memberof": "server/api/sql/seed.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/seed.js~exports",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "file",
+    "name": "server/api/sql/sql.controller.js",
+    "content": "var config = require(\"../../config\");\r\nvar logger = require(\"../../util/logger\");\r\n\r\nvar SqlDatabase = require('../../sqldatabase');\r\n\r\nexports.getAll = function (req, res) {\r\n    logger.debug (\"get user\");\r\n    var users = [ { first_name: \"\", last_name: \"\"}]\r\n    res.status(200).json(users);\r\n}\r\n\r\nexports.register = function(req, res) {\r\n    logger.debug (\"register user\");\r\n};\r\n\r\nexports.create = function (req, res) {\r\n    logger.debug (\"list user ...\");\r\n    var users = [ { first_name: \"\", last_name: \"\"}]\r\n    res.status(200).json(users);\r\n};\r\n\r\nexports.getOne = function (req, res) {\r\n    logger.debug (\"reset password\");\r\n};\r\n\r\nexports.update = function (req, res) {\r\n    logger.debug (\"change password\");\r\n};\r\n\r\nexports.delete = function (req, res) {\r\n    logger.debug (\"profile\");\r\n};\r\n\r\nexports.count = function (req, res) {\r\n    logger.debug (\"profile token\");\r\n};\r\n\r\n\r\nexports.isExist = function (req, res) {\r\n    logger.debug (\"change passoword token\");\r\n};\r\n\r\nexports.relationship = function (req, res) {\r\n    logger.debug (\"profiles\");\r\n};\r\n\r\nexports.dyamicSql = function (req, res) {\r\n    logger.debug (\"create\");\r\n};\r\n\r\nexports.describe = function (req, res) {\r\n    logger.debug (\"update\");\r\n};\r\n\r\nexports.tables = function (req, res) {\r\n    logger.debug (\"remove\");\r\n};\r\n\r\n\r\nfunction handleErr(res) {\r\n    handleErr(res, null);\r\n}\r\n\r\n\r\nfunction handleErr(res, err) {\r\n    console.log(err);\r\n    res\r\n        .status(500)\r\n        .json({\r\n            error: true\r\n        });\r\n}\r\n\r\nfunction handler404(res) {\r\n    res\r\n        .status(404)\r\n        .json({message: \"User not found!\"});\r\n}\r\n\r\nfunction returnResults(results, res) {\r\n    res.send(results);\r\n}",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/api/sql/sql.controller.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 72,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/api/sql/sql.controller.js",
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "logger",
+    "memberof": "server/api/sql/sql.controller.js",
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~logger",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "variable",
+    "name": "SqlDatabase",
+    "memberof": "server/api/sql/sql.controller.js",
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~SqlDatabase",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "getAll",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~getAll",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "function",
+    "name": "register",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~register",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "create",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~create",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "getOne",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~getOne",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "update",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~update",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "delete",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~delete",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "name": "count",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~count",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "function",
+    "name": "isExist",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~isExist",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "function",
+    "name": "relationship",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~relationship",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "function",
+    "name": "dyamicSql",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~dyamicSql",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "describe",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~describe",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "tables",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~tables",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 55,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "function",
+    "name": "handleErr",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~handleErr",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "handleErr",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~handleErr",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "err",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "function",
+    "name": "handler404",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~handler404",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 74,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "function",
+    "name": "returnResults",
+    "memberof": "server/api/sql/sql.controller.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/api/sql/sql.controller.js~returnResults",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/api/sql/sql.controller.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 80,
+    "undocument": true,
+    "params": [
+      {
+        "name": "results",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "file",
+    "name": "server/app.js",
+    "content": "\"use strict\";\r\nvar express = require('express');\r\nvar cors = require('cors');\r\nvar bodyParser = require('body-parser');\r\nvar cookieParser = require('cookie-parser')\r\nvar compression = require('compression')\r\nvar cors = require(\"cors\");\r\nvar helmet = require(\"helmet\");\r\nvar csurf = require(\"csurf\");\r\nvar logger = require(\"./util/logger\");\r\nconst routes = require(\"./routes\");\r\nvar app = express();\r\n\r\napp.use(compression());\r\napp.use(helmet());\r\n\r\napp.disable('x-power-by');\r\napp.use(cors({optionSuccessStatus: 200}));\r\napp.use(bodyParser.urlencoded({limit: '50mb', extended: true}));\r\napp.use(bodyParser.json({limit: '50mb'}));\r\napp.use(cookieParser())\r\napp.use(csurf({ cookie : true}));\r\n\r\nroutes.init(app);\r\nroutes.errorHandler(app);\r\n\r\napp.use(function(err, req, res, next){\r\n    if(err.code !== 'EBADCSRFTOKEN') return next(err)\r\n    logger.debug(\"app use\");\r\n    res.status(403);\r\n    res.send('ERROR CSURF !');\r\n});\r\n\r\nmodule.exports = app;",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/app.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "name": "express",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~express",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "name": "cors",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~cors",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "variable",
+    "name": "bodyParser",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~bodyParser",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "cookieParser",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~cookieParser",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 5,
@@ -714,15 +1891,36 @@
     "ignore": true
   },
   {
-    "__docId__": 58,
+    "__docId__": 96,
     "kind": "variable",
-    "name": "app",
-    "memberof": "server/server.js",
+    "name": "compression",
+    "memberof": "server/app.js",
     "static": true,
-    "longname": "server/server.js~app",
+    "longname": "server/app.js~compression",
     "access": "public",
     "export": false,
-    "importPath": "block5d-backend/server/server.js",
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "variable",
+    "name": "cors",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~cors",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 7,
@@ -735,7 +1933,1281 @@
     "ignore": true
   },
   {
-    "__docId__": 59,
+    "__docId__": 98,
+    "kind": "variable",
+    "name": "helmet",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~helmet",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "variable",
+    "name": "csurf",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~csurf",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "variable",
+    "name": "logger",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~logger",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "variable",
+    "name": "routes",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~routes",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "variable",
+    "name": "app",
+    "memberof": "server/app.js",
+    "static": true,
+    "longname": "server/app.js~app",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "file",
+    "name": "server/authentication.js",
+    "content": "/**\r\n * Authentication for firebase\r\n * @author Kenneth Phang\r\n */\r\n'use strict';\r\nconst admin = require('firebase-admin');\r\n\r\nconst logger = require('./util/logger');\r\nconst config = require('./config');\r\n\r\nfunction firebaseAuthMiddleware(req, res, next) {\r\n    const authorization = req.header('Authorization');\r\n    console.log(` ---> ` + authorization);\r\n    if(config.authentication_enable){\r\n        if (authorization) {\r\n            let token = authorization.split(' ');\r\n            admin.auth().verifyIdToken(token[1])\r\n            .then((decodedToken) => {\r\n                logger.debug(decodedToken);\r\n                res.locals.user = decodedToken;\r\n                next();\r\n            })\r\n            .catch(err => {\r\n                logger.debug(err);\r\n                res.sendStatus(401);\r\n            });\r\n        } else {\r\n            logger.debug('Authorization header is not found');\r\n            res.sendStatus(401);\r\n        }\r\n    } else {\r\n        next();\r\n    }  \r\n}\r\n\r\nmodule.exports = firebaseAuthMiddleware;",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/authentication.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 104,
+    "kind": "variable",
+    "name": "admin",
+    "memberof": "server/authentication.js",
+    "static": true,
+    "longname": "server/authentication.js~admin",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/authentication.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 105,
+    "kind": "variable",
+    "name": "logger",
+    "memberof": "server/authentication.js",
+    "static": true,
+    "longname": "server/authentication.js~logger",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/authentication.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/authentication.js",
+    "static": true,
+    "longname": "server/authentication.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/authentication.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "function",
+    "name": "firebaseAuthMiddleware",
+    "memberof": "server/authentication.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/authentication.js~firebaseAuthMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/authentication.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "next",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 108,
+    "kind": "file",
+    "name": "server/config/development.js",
+    "content": "'use strict';\r\nconst domain_name = \"http://localhost:3000\";\r\nmodule.exports = {\r\n    domain_name: domain_name,\r\n    authentication_enable: false,\r\n    mongodb: process.env.MONGODB_URL || \"mongodb://nusiss:password1234@ds029456.mlab.com:29456/judgeformdb\",\r\n    sqldb: process.env.SQLDB_URL || \"mysql://root:password1234@localhost/yummylicious?reconnect=true\",\r\n    database: 'employees',\r\n    sql_seed: false,\r\n    port: process.env.PORT\r\n}",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/config/development.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 109,
+    "kind": "variable",
+    "name": "domain_name",
+    "memberof": "server/config/development.js",
+    "static": true,
+    "longname": "server/config/development.js~domain_name",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/config/development.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 110,
+    "kind": "file",
+    "name": "server/config/e2e.js",
+    "content": "'use strict';\r\nconst domain_name = \"http://localhost:3001\";\r\nmodule.exports = {\r\n    domain_name: domain_name,\r\n    authentication_enable: true,\r\n    mongodb: process.env.MONGODB_URL || \"mongodb://nusiss:password1234@ds029456.mlab.com:29456/judgeformdb\",\r\n    sqldb: process.env.SQLDB_URL || \"mysql://root:password1234@localhost/yummylicious?reconnect=true\",\r\n    sql_seed: false,\r\n    port: process.env.PORT,\r\n}",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/config/e2e.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 111,
+    "kind": "variable",
+    "name": "domain_name",
+    "memberof": "server/config/e2e.js",
+    "static": true,
+    "longname": "server/config/e2e.js~domain_name",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/config/e2e.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "file",
+    "name": "server/config/index.js",
+    "content": "'use strict';\r\n\r\nvar ENV = process.env.NODE_ENV || \"development\";\r\nmodule.exports = require('./' + ENV + '.js') || {};",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/config/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 113,
+    "kind": "variable",
+    "name": "ENV",
+    "memberof": "server/config/index.js",
+    "static": true,
+    "longname": "server/config/index.js~ENV",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/config/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "file",
+    "name": "server/config/production.js",
+    "content": "'use strict';\r\nconst domain_name = \"http://localhost:3001\";\r\nmodule.exports = {\r\n    domain_name: domain_name,\r\n    authentication_enable: true,\r\n    mongodb: process.env.MONGODB_URL || \"mongodb://nusiss:password1234@ds029456.mlab.com:29456/judgeformdb\",\r\n    sqldb: process.env.SQLDB_URL || \"mysql://root:password1234@localhost/yummylicious?reconnect=true\",\r\n    sql_seed: false,\r\n    port: process.env.PORT,\r\n}",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/config/production.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 115,
+    "kind": "variable",
+    "name": "domain_name",
+    "memberof": "server/config/production.js",
+    "static": true,
+    "longname": "server/config/production.js~domain_name",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/config/production.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "file",
+    "name": "server/initdbtables.js",
+    "content": "// get the client\r\nconst mysql = require('mysql2');\r\nvar jsonfile = require('jsonfile');\r\nvar fs = require('fs');\r\nvar config = require('./config');\r\n\r\nvar tablefile = './server/tables.json'\r\n\r\n// create the connection to database\r\nconst connection = mysql.createConnection({\r\n  host: 'localhost',\r\n  user: 'root',\r\n  password: 'password1234',\r\n  database: 'employees'\r\n});\r\nif(connection){\r\n    // simple query\r\n    connection.query(\r\n    'show tables',\r\n    function(err, results, fields) {\r\n      var tables = [];\r\n      for (var x =0; x < results.length; x++){\r\n        if(results[x]){\r\n            var result = results[x];\r\n            tables.push(result[`Tables_in_${config.database}`]);\r\n        }\r\n      }\r\n      \r\n      jsonfile.writeFile(tablefile, tables, function (err) {\r\n          if(!err){\r\n              process.exit();\r\n          }\r\n      });\r\n    }\r\n  );\r\n  \r\n  \r\n}\r\n",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/initdbtables.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 117,
+    "kind": "variable",
+    "name": "mysql",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~mysql",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 118,
+    "kind": "variable",
+    "name": "jsonfile",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~jsonfile",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "variable",
+    "name": "fs",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~fs",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 120,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 121,
+    "kind": "variable",
+    "name": "tablefile",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~tablefile",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 122,
+    "kind": "variable",
+    "name": "connection",
+    "memberof": "server/initdbtables.js",
+    "static": true,
+    "longname": "server/initdbtables.js~connection",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/initdbtables.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "name": "server/mongohelper.js",
+    "content": "var async = require('async');\r\nvar MongoClient = require('mongodb').MongoClient;\r\nvar config = require(\"./config\");\r\n\r\nvar PROD_URI = config.mongodb;\r\nconsole.log(PROD_URI);\r\nvar databases = {\r\n  production: async.apply(MongoClient.connect, PROD_URI),\r\n};\r\n \r\nmodule.exports = function (cb) {\r\n  async.parallel(databases, cb);\r\n};",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/mongohelper.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 124,
+    "kind": "variable",
+    "name": "async",
+    "memberof": "server/mongohelper.js",
+    "static": true,
+    "longname": "server/mongohelper.js~async",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 125,
+    "kind": "variable",
+    "name": "MongoClient",
+    "memberof": "server/mongohelper.js",
+    "static": true,
+    "longname": "server/mongohelper.js~MongoClient",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 126,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/mongohelper.js",
+    "static": true,
+    "longname": "server/mongohelper.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 127,
+    "kind": "variable",
+    "name": "PROD_URI",
+    "memberof": "server/mongohelper.js",
+    "static": true,
+    "longname": "server/mongohelper.js~PROD_URI",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 128,
+    "kind": "variable",
+    "name": "databases",
+    "memberof": "server/mongohelper.js",
+    "static": true,
+    "longname": "server/mongohelper.js~databases",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"production\": *}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "function",
+    "name": "exports",
+    "memberof": "server/mongohelper.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/mongohelper.js~exports",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/mongohelper.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "cb",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 130,
+    "kind": "file",
+    "name": "server/routes.js",
+    "content": "/**\r\n * Routes\r\n * @author Kenneth Phang\r\n */\r\nvar path = require(\"path\");\r\nvar express = require('express');\r\nvar isAuthenticated = require(\"./authentication\");\r\nvar SqlController = require(\"./api/sql/sql.controller\");\r\nvar MongoDBController = require(\"./api/mongodb/mongodb.controller\");\r\n\r\nconst API_ROOT = \"/api/\"\r\nconst API_ROOT_SQL = \"sql/\"\r\nconst API_ROOT_MONGODB = \"mongo/\"\r\nconst CLIENT_FOLDER = path.join(__dirname + '/../public');\r\n\r\nconst API_SQL_URI_GP = `${API_ROOT}${API_ROOT_SQL}:tableName`; // GET and POST\r\nconst API_SQL_URI_GP2 = `${API_ROOT}${API_ROOT_SQL}:tableName/:id`; // GET and PUT and DELETE\r\nconst API_SQL_URI_COUNT = `${API_ROOT}${API_ROOT_SQL}:tableName/count`; // COUNT\r\nconst API_SQL_URI_EXIST = `${API_ROOT}${API_ROOT_SQL}:tableName/exists`; // exists\r\nconst API_SQL_URI_PARENT_CHILD = `${API_ROOT}${API_ROOT_SQL}:parentTable/:id/:childTable`; // parent and child relationship\r\nconst API_SQL_URI_DYNAMIC = `${API_ROOT}dynamicSql`; // dynamic sql\r\nconst API_SQL_URI_DESCRIBE = `${API_ROOT}${API_ROOT_SQL}:tableName/describe`; // dynamic sql\r\nconst API_SQL_URI_TABLES = `${API_ROOT}${API_ROOT_SQL}tables`; // list all tables\r\n\r\n    \r\nconst API_MONGODB_URI_GP = `${API_ROOT}${API_ROOT_MONGODB}:collectionName`; // GET and POST\r\nconst API_MONGODB_URI_GP2 = `${API_ROOT}${API_ROOT_MONGODB}:collectionName/:id`; // GET and PUT and DELETE\r\nconst API_MONGODB_URI_COUNT = `${API_ROOT}${API_ROOT_MONGODB}:collectionName/count`; // COUNT\r\nconst API_MONGODB_URI_EXIST = `${API_ROOT}${API_ROOT_MONGODB}:collectionName/exists`; // exists\r\nconst API_MONGODB_URI_PARENT_CHILD = `${API_ROOT}${API_ROOT_MONGODB}:parentCollection/:id/:childCollection`; // parent and child relationship\r\nconst API_MONGODB_URI_DYNAMIC = `${API_ROOT}dynamicSql`; // dynamic sql\r\nconst API_MONGODB_URI_DESCRIBE = `${API_ROOT}${API_ROOT_MONGODB}:collectionName/describe`; // dynamic sql\r\nconst API_MONGODB_URI_TABLES = `${API_ROOT}${API_ROOT_MONGODB}collections`; // list all tables\r\n\r\n\r\nmodule.exports = {\r\n    init: configureRoutes,\r\n    errorHandler: errorHandler    \r\n};\r\n\r\nfunction configureRoutes(app){\r\n    /*\r\n    SQL\r\n    GET         /api/sql/:tableName\r\n    POST        /api/sql/:tableName\r\n    GET         /api/sql/:tableName/:id\r\n    PUT         /api/sql/:tableName/:id\r\n    GET         /api/sql/:tableName/count\r\n    GET         /api/sql/:tableName/exists\r\n    GET         /api/sql/:parentTable/:id/:childTable\r\n    DELETE      /api/sql/:tableName/:id\r\n    POST        /dynamicSql\r\n    GET         /api/sql/:tableName/describe\r\n    GET         /api/sql/tables\r\n    */\r\n    app.get(API_SQL_URI_GP, isAuthenticated, SqlController.getAll);\r\n    app.post(API_SQL_URI_GP, isAuthenticated, SqlController.create);\r\n    app.get(API_SQL_URI_GP2, isAuthenticated, SqlController.getOne);\r\n    app.put(API_SQL_URI_GP2, isAuthenticated, SqlController.update);\r\n    app.delete(API_SQL_URI_GP2, isAuthenticated, SqlController.delete);\r\n    app.get(API_SQL_URI_COUNT, isAuthenticated, SqlController.count);\r\n    app.get(API_SQL_URI_EXIST, isAuthenticated, SqlController.isExist);\r\n    app.get(API_SQL_URI_PARENT_CHILD, isAuthenticated, SqlController.relationship);\r\n    app.post(API_SQL_URI_DYNAMIC, isAuthenticated, SqlController.dyamicSql);\r\n    app.get(API_SQL_URI_DESCRIBE, isAuthenticated, SqlController.describe);\r\n    app.get(API_SQL_URI_TABLES, isAuthenticated, SqlController.tables);\r\n    \r\n    /*\r\n    mongodb\r\n    GET         /api/mongo/:collectionName\r\n    POST        /api/mongo/:collectionName\r\n    GET         /api/mongo/:collectionName/:id\r\n    PUT         /api/mongo/:collectionName/:id\r\n    GET         /api/mongo/:collectionName/count\r\n    GET         /api/mongo/:collectionName/exists\r\n    GET         /api/mongo/:parentCollection/:id/:childCollection\r\n    DELETE      /api/mongo/:collectionName/:id\r\n    POST        /dynamicNoSql\r\n    GET         /api/mongo/:collectionName/describe\r\n    GET         /api/mongo/collections\r\n    */\r\n    app.get(API_MONGODB_URI_GP, isAuthenticated, MongoDBController.getAll);\r\n    app.post(API_MONGODB_URI_GP, isAuthenticated, MongoDBController.create);\r\n    app.get(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.getOne);\r\n    app.put(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.update);\r\n    app.delete(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.delete);\r\n    app.get(API_MONGODB_URI_COUNT, isAuthenticated, MongoDBController.count);\r\n    app.get(API_MONGODB_URI_EXIST, isAuthenticated, MongoDBController.isExist);\r\n    app.get(API_MONGODB_URI_PARENT_CHILD, isAuthenticated, MongoDBController.relationship);\r\n    app.post(API_MONGODB_URI_DYNAMIC, isAuthenticated, MongoDBController.dyamicNoSql);\r\n    app.get(API_MONGODB_URI_DESCRIBE, isAuthenticated, MongoDBController.describe);\r\n    app.get(API_MONGODB_URI_TABLES, isAuthenticated, MongoDBController.tables);\r\n    \r\n    app.use(express.static(CLIENT_FOLDER));\r\n}\r\n\r\n\r\nfunction errorHandler(app) {\r\n    app.use(function (req, res) {\r\n        res.status(401).sendFile(CLIENT_FOLDER + \"/404.html\");\r\n    });\r\n\r\n    app.use(function (err, req, res, next) {\r\n        res.status(500).sendFile(path.join(CLIENT_FOLDER + '/500.html'));\r\n    });\r\n};",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/routes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 131,
+    "kind": "variable",
+    "name": "path",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~path",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": "Routes",
+    "lineNumber": 5,
+    "unknown": [
+      {
+        "tagName": "@author",
+        "tagValue": "Kenneth Phang"
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "variable",
+    "name": "express",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~express",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "variable",
+    "name": "isAuthenticated",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~isAuthenticated",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "variable",
+    "name": "SqlController",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~SqlController",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "variable",
+    "name": "MongoDBController",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~MongoDBController",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 136,
+    "kind": "variable",
+    "name": "API_ROOT",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_ROOT",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 137,
+    "kind": "variable",
+    "name": "API_ROOT_SQL",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_ROOT_SQL",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 138,
+    "kind": "variable",
+    "name": "API_ROOT_MONGODB",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_ROOT_MONGODB",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "variable",
+    "name": "CLIENT_FOLDER",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~CLIENT_FOLDER",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "variable",
+    "name": "API_SQL_URI_GP",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_GP",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "variable",
+    "name": "API_SQL_URI_GP2",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_GP2",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 142,
+    "kind": "variable",
+    "name": "API_SQL_URI_COUNT",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_COUNT",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "variable",
+    "name": "API_SQL_URI_EXIST",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_EXIST",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "variable",
+    "name": "API_SQL_URI_PARENT_CHILD",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_PARENT_CHILD",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "variable",
+    "name": "API_SQL_URI_DYNAMIC",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_DYNAMIC",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "variable",
+    "name": "API_SQL_URI_DESCRIBE",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_DESCRIBE",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 147,
+    "kind": "variable",
+    "name": "API_SQL_URI_TABLES",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_SQL_URI_TABLES",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_GP",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_GP",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 149,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_GP2",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_GP2",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_COUNT",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_COUNT",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_EXIST",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_EXIST",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_PARENT_CHILD",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_PARENT_CHILD",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_DYNAMIC",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_DYNAMIC",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_DESCRIBE",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_DESCRIBE",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "variable",
+    "name": "API_MONGODB_URI_TABLES",
+    "memberof": "server/routes.js",
+    "static": true,
+    "longname": "server/routes.js~API_MONGODB_URI_TABLES",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "function",
+    "name": "configureRoutes",
+    "memberof": "server/routes.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/routes.js~configureRoutes",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "app",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "function",
+    "name": "errorHandler",
+    "memberof": "server/routes.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/routes.js~errorHandler",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/routes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 98,
+    "undocument": true,
+    "params": [
+      {
+        "name": "app",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "file",
+    "name": "server/server.js",
+    "content": "const app = require('./app')\r\nvar logger = require(\"./util/logger\");\r\nvar port = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000;\r\n\r\napp.listen(port, ()=>{\r\n    logger.info(\"Server listening on port \" + port);\r\n});\r\n\r\n",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/server.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 159,
+    "kind": "variable",
+    "name": "app",
+    "memberof": "server/server.js",
+    "static": true,
+    "longname": "server/server.js~app",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "variable",
+    "name": "logger",
+    "memberof": "server/server.js",
+    "static": true,
+    "longname": "server/server.js~logger",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 161,
     "kind": "variable",
     "name": "port",
     "memberof": "server/server.js",
@@ -743,10 +3215,10 @@
     "longname": "server/server.js~port",
     "access": "public",
     "export": false,
-    "importPath": "block5d-backend/server/server.js",
+    "importPath": "block5d-backend",
     "importStyle": null,
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 3,
     "undocument": true,
     "type": {
       "types": [
@@ -756,51 +3228,290 @@
     "ignore": true
   },
   {
-    "__docId__": 60,
-    "kind": "variable",
-    "name": "server",
-    "memberof": "server/server.js",
-    "static": true,
-    "longname": "server/server.js~server",
-    "access": "public",
-    "export": false,
-    "importPath": "block5d-backend/server/server.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 17,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 61,
+    "__docId__": 162,
     "kind": "file",
     "name": "server/sqldatabase.js",
-    "content": "",
+    "content": "var Sequelize = require('sequelize');\r\nvar config = require(\"./config\");\r\n\r\nconsole.log(config.sqldb);\r\nvar database = new Sequelize(config.sqldb, {\r\n    pool: {\r\n        max: 20,\r\n        min: 0,\r\n        idle: 10000\r\n    }\r\n});\r\n\r\ndatabase\r\n    .sync({force: config.sql_seed})\r\n    .then(function () {\r\n        console.log(\"Database in Sync Now\");\r\n        require(\"./api/sql/seed\")();\r\n    });\r\n\r\nmodule.exports = {\r\n    database: database\r\n};\r\n",
     "static": true,
-    "longname": "/home/kenneth/Projects/block5d-backend/server/sqldatabase.js",
+    "longname": "D:/Projects/block5d/block5d-backend/server/sqldatabase.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
+    "__docId__": 163,
+    "kind": "variable",
+    "name": "Sequelize",
+    "memberof": "server/sqldatabase.js",
+    "static": true,
+    "longname": "server/sqldatabase.js~Sequelize",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/sqldatabase.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "server/sqldatabase.js",
+    "static": true,
+    "longname": "server/sqldatabase.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/sqldatabase.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "variable",
+    "name": "database",
+    "memberof": "server/sqldatabase.js",
+    "static": true,
+    "longname": "server/sqldatabase.js~database",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/sqldatabase.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "file",
+    "name": "server/util/logger.js",
+    "content": "/**\r\n * Debug logger utility\r\n * @author Kenneth Phanf\r\n */\r\n'use strict';\r\n const debugenv = (process.env.APP_DEBUG === 'true');\r\nvar bunyan = require('bunyan');\r\nlet bunyanlogger = bunyan.createLogger({\r\n    name: 'block5d-backend',\r\n    streams: [\r\n        {\r\n            level: 'debug',\r\n            stream: process.stdout,\r\n        },\r\n        {\r\n            level: 'error',\r\n            path: process.env.ERROR_LOG || \"./logs/app-error.log\"\r\n        }\r\n    ]\r\n});\r\nfunction error() {\r\n    if (!debugenv) return;\r\n\r\n    bunyanlogger.error(...arguments);\r\n}\r\n\r\nfunction info() {\r\n    if (!debugenv) return;\r\n\r\n    bunyanlogger.info(...arguments);\r\n}\r\n\r\nfunction debug() {\r\n    if (!debugenv) return;\r\n\r\n    bunyanlogger.debug(...arguments);\r\n}\r\n\r\nmodule.exports = {\r\n    error, info, debug\r\n};",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/server/util/logger.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 167,
+    "kind": "variable",
+    "name": "debugenv",
+    "memberof": "server/util/logger.js",
+    "static": true,
+    "longname": "server/util/logger.js~debugenv",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "variable",
+    "name": "bunyan",
+    "memberof": "server/util/logger.js",
+    "static": true,
+    "longname": "server/util/logger.js~bunyan",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "variable",
+    "name": "bunyanlogger",
+    "memberof": "server/util/logger.js",
+    "static": true,
+    "longname": "server/util/logger.js~bunyanlogger",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 170,
+    "kind": "function",
+    "name": "error",
+    "memberof": "server/util/logger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/util/logger.js~error",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "function",
+    "name": "info",
+    "memberof": "server/util/logger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/util/logger.js~info",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "function",
+    "name": "debug",
+    "memberof": "server/util/logger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "server/util/logger.js~debug",
+    "access": "public",
+    "export": false,
+    "importPath": "block5d-backend/server/util/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
     "kind": "index",
-    "content": "# README #\nSarah\ncherylyigi\nThis README would normally document whatever steps are necessary to get your application up and running.\n\n### What is this repository for? ###\n\n* Quick summary\n* Version\n* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)\n\n### How do I get set up? ###\n\n* Summary of set up\n* Configuration\n* Dependencies\n* Database configuration\n* How to run tests\n* Deployment instructions\n\n### Contribution guidelines ###\n\n* Writing tests\n* Code review\n* Other guidelines\n\n### Who do I talk to? ###\n\n* Repo owner or admin\n* Other community or team contact\n",
-    "longname": "/home/kenneth/Projects/block5d-backend/README.md",
+    "content": "#### Allowed `<type>`\r\n* feat (feature)\r\n* fix (bug fix)\r\n* docs (documentation)\r\n* style (formatting, missing semi colons, …)\r\n* refactor\r\n* test (when adding missing tests)\r\n* chore (maintain)\r\n\r\n# README #\r\nThis README would normally document whatever steps are necessary to get your application up and running.\r\n\r\n### What is this repository for? ###\r\n\r\n* Quick summary\r\n* Version\r\n* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)\r\n\r\n### How do I get set up? ###\r\n\r\n* Summary of set up\r\n* Configuration\r\n* Dependencies\r\n* Database configuration\r\n* How to run tests\r\n* Deployment instructions\r\n\r\n### Contribution guidelines ###\r\n\r\n* Writing tests\r\n* Code review\r\n* Other guidelines\r\n\r\n### Who do I talk to? ###\r\n\r\n* Repo owner or admin\r\n* Other community or team contact\r\n",
+    "longname": "D:\\Projects\\block5d\\block5d-backend\\README.md",
     "name": "./README.md",
     "static": true,
     "access": "public"
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"block5d-backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Server side for block5d web app\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"npm install; node server.js\",\n    \"esdoc\": \"./node_modules/.bin/esdoc\",\n    \"test\": \"jest\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://bitbucket.org/block5dsingapore/block5d-backend.git\"\n  },\n  \"author\": \"NUS ISS\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://bitbucket.org/block5dsingapore/block5d-backend#readme\",\n  \"dependencies\": {\n    \"bcryptjs\": \"^2.4.3\",\n    \"body-parser\": \"^1.18.1\",\n    \"compression\": \"^1.7.1\",\n    \"cors\": \"^2.8.4\",\n    \"express\": \"^4.15.4\",\n    \"lodash\": \"^4.17.4\",\n    \"mongodb\": \"^2.2.31\",\n    \"mongoskin\": \"^2.1.0\",\n    \"q\": \"^1.5.0\",\n    \"request\": \"^2.81.0\",\n    \"rootpath\": \"^0.1.2\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"esdoc\": \"^1.0.3\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"jest\": \"^21.2.1\",\n    \"superagent\": \"^3.6.0\",\n    \"supertest\": \"^3.0.0\"\n  }\n}\n",
-    "longname": "/home/kenneth/Projects/block5d-backend/package.json",
+    "content": "{\n  \"name\": \"block5d-backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Server side for block5d web app\",\n  \"main\": \"server/server.js\",\n  \"engines\": {\n    \"node\": \"8.2.1\",\n    \"npm\": \"5.5.1\"\n  },\n  \"scripts\": {\n    \"preinstall\": \"node server/initdbtables.js\",\n    \"start\": \"npm install; node server/server.js\",\n    \"esdoc\": \"./node_modules/.bin/esdoc\",\n    \"test\": \"jest --coverage\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/Block5d/block5d-backend.git\"\n  },\n  \"author\": \"NUS ISS\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com/Block5d/block5d-backend/blob/master/README.md\",\n  \"dependencies\": {\n    \"async\": \"^2.5.0\",\n    \"bcryptjs\": \"^2.4.3\",\n    \"body-parser\": \"^1.18.1\",\n    \"bunyan\": \"^1.8.12\",\n    \"compression\": \"^1.7.1\",\n    \"cookie-parser\": \"^1.4.3\",\n    \"cors\": \"^2.8.4\",\n    \"csurf\": \"^1.9.0\",\n    \"express\": \"^4.15.4\",\n    \"firebase-admin\": \"^5.4.2\",\n    \"helmet\": \"^3.8.2\",\n    \"jsonfile\": \"^4.0.0\",\n    \"lodash\": \"^4.17.4\",\n    \"mongodb\": \"^2.2.33\",\n    \"mysql2\": \"^1.4.2\",\n    \"q\": \"^1.5.0\",\n    \"request\": \"^2.81.0\",\n    \"rootpath\": \"^0.1.2\",\n    \"sequelize\": \"^4.20.1\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"esdoc\": \"^1.0.3\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"jest\": \"^21.2.1\",\n    \"superagent\": \"^3.6.0\",\n    \"supertest\": \"^3.0.0\"\n  }\n}\n",
+    "longname": "D:\\Projects\\block5d\\block5d-backend\\package.json",
     "name": "package.json",
     "static": true,
     "access": "public"
+  },
+  {
+    "__docId__": 173,
+    "kind": "testFile",
+    "name": "test/server.test.js",
+    "content": "\"use strict\";\r\nconst request = require('supertest');\r\nconst app = require('../server/app.js');\r\nconsole.log(app);\r\n/* test root path */\r\ndescribe('Test the root path', function() {\r\n    test('It should response the GET method', function() {\r\n        return request(app).get(\"/\").then(function(response) {\r\n            expect(response.statusCode).toBe(200);\r\n        });\r\n    });\r\n});\r\n\r\n/** test no end point found */\r\ndescribe('Test no end point found', function() {\r\n    test('It return page not found in response', function() {\r\n        return request(app).get(\"/sdffdf\").then(function(response) {\r\n            expect(response.text).toBe(\"<h1>!!!! Page not found ! ! !</h1>\");\r\n        });\r\n    });\r\n});\r\n",
+    "static": true,
+    "longname": "D:/Projects/block5d/block5d-backend/test/server.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 174,
+    "kind": "test",
+    "name": "describe0",
+    "testId": 0,
+    "memberof": "test/server.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/server.test.js~describe0",
+    "access": null,
+    "description": "Test the root path",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 175,
+    "kind": "test",
+    "name": "test1",
+    "testId": 1,
+    "memberof": "test/server.test.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/server.test.js~describe0.test1",
+    "access": null,
+    "description": "It should response the GET method",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 176,
+    "kind": "test",
+    "name": "describe2",
+    "testId": 2,
+    "memberof": "test/server.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/server.test.js~describe2",
+    "access": null,
+    "description": "test no end point found",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 177,
+    "kind": "test",
+    "name": "test3",
+    "testId": 3,
+    "memberof": "test/server.test.js~describe2",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/server.test.js~describe2.test3",
+    "access": null,
+    "description": "It return page not found in response",
+    "lineNumber": 16
   }
 ]

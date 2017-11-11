@@ -16,7 +16,7 @@
   
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+  <a href="test.html" data-ice="testLink">Test</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a href="https://bitbucket.org/block5dsingapore/block5d-backend.git">Repository</a></header>
+<a style="position:relative; top:3px;" href="https://github.com/Block5d/block5d-backend.git"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -34,8 +34,43 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">server/authentication.js</h1>
-<pre class="source-code line-number raw-source-code"></pre>
-<p data-ice="emptySourceCode">Sorry, this documentation does not provide source code.</p>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Authentication for firebase
+ * @author Kenneth Phang
+ */
+&apos;use strict&apos;;
+const admin = require(&apos;firebase-admin&apos;);
+
+const logger = require(&apos;./util/logger&apos;);
+const config = require(&apos;./config&apos;);
+
+function firebaseAuthMiddleware(req, res, next) {
+    const authorization = req.header(&apos;Authorization&apos;);
+    console.log(` ---&gt; ` + authorization);
+    if(config.authentication_enable){
+        if (authorization) {
+            let token = authorization.split(&apos; &apos;);
+            admin.auth().verifyIdToken(token[1])
+            .then((decodedToken) =&gt; {
+                logger.debug(decodedToken);
+                res.locals.user = decodedToken;
+                next();
+            })
+            .catch(err =&gt; {
+                logger.debug(err);
+                res.sendStatus(401);
+            });
+        } else {
+            logger.debug(&apos;Authorization header is not found&apos;);
+            res.sendStatus(401);
+        }
+    } else {
+        next();
+    }  
+}
+
+module.exports = firebaseAuthMiddleware;</code></pre>
+
 </div>
 
 <footer class="footer">

@@ -16,7 +16,7 @@
   
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+  <a href="test.html" data-ice="testLink">Test</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a href="https://bitbucket.org/block5dsingapore/block5d-backend.git">Repository</a></header>
+<a style="position:relative; top:3px;" href="https://github.com/Block5d/block5d-backend.git"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -34,27 +34,15 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">server/server.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&quot;use strict&quot;;
-var express = require(&apos;express&apos;);
-var cors = require(&apos;cors&apos;);
-var bodyParser = require(&apos;body-parser&apos;);
-var compression = require(&apos;compression&apos;)
-
-var app = express();
-
-app.use(compression())
-app.disable(&apos;x-power-by&apos;);
-app.use(cors({optionSuccessStatus: 200}));
-
-app.use(bodyParser.urlencoded({limit: &apos;50mb&apos;, extended: true}));
-app.use(bodyParser.json({limit: &apos;50mb&apos;}));
-
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const app = require(&apos;./app&apos;)
+var logger = require(&quot;./util/logger&quot;);
 var port = process.env.NODE_ENV === &apos;production&apos; ? process.env.PORT : 4000;
-var server = app.listen(port, function(){
-    console.log(&quot;Server listening on port &quot; + port);
+
+app.listen(port, ()=&gt;{
+    logger.info(&quot;Server listening on port &quot; + port);
 });
 
-module.exports = app;</code></pre>
+</code></pre>
 
 </div>
 

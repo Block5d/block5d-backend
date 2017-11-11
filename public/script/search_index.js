@@ -1,5 +1,17 @@
 window.esdocSearchIndex = [
   [
+    "",
+    "test-file/test/server.test.js.html#lineNumber6",
+    "Test the root path",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/server.test.js.html#lineNumber7",
+    "Test the root path It should response the GET method",
+    "test"
+  ],
+  [
     "server/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "server/.external-ecmascript.js~Array",
@@ -282,6 +294,30 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "server/api/mongodb/mongodb.controller.js",
+    "file/server/api/mongodb/mongodb.controller.js.html",
+    "server/api/mongodb/mongodb.controller.js",
+    "file"
+  ],
+  [
+    "server/api/sql/seed.js",
+    "file/server/api/sql/seed.js.html",
+    "server/api/sql/seed.js",
+    "file"
+  ],
+  [
+    "server/api/sql/sql.controller.js",
+    "file/server/api/sql/sql.controller.js.html",
+    "server/api/sql/sql.controller.js",
+    "file"
+  ],
+  [
+    "server/app.js",
+    "file/server/app.js.html",
+    "server/app.js",
+    "file"
+  ],
+  [
     "server/authentication.js",
     "file/server/authentication.js.html",
     "server/authentication.js",
@@ -294,9 +330,27 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "server/config/e2e.js",
+    "file/server/config/e2e.js.html",
+    "server/config/e2e.js",
+    "file"
+  ],
+  [
     "server/config/index.js",
     "file/server/config/index.js.html",
     "server/config/index.js",
+    "file"
+  ],
+  [
+    "server/config/production.js",
+    "file/server/config/production.js.html",
+    "server/config/production.js",
+    "file"
+  ],
+  [
+    "server/initdbtables.js",
+    "file/server/initdbtables.js.html",
+    "server/initdbtables.js",
     "file"
   ],
   [
@@ -306,9 +360,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "server/production.js",
-    "file/server/production.js.html",
-    "server/production.js",
+    "server/routes.js",
+    "file/server/routes.js.html",
+    "server/routes.js",
     "file"
   ],
   [
@@ -322,5 +376,29 @@ window.esdocSearchIndex = [
     "file/server/sqldatabase.js.html",
     "server/sqldatabase.js",
     "file"
+  ],
+  [
+    "server/util/logger.js",
+    "file/server/util/logger.js.html",
+    "server/util/logger.js",
+    "file"
+  ],
+  [
+    "",
+    "test-file/test/server.test.js.html#lineNumber15",
+    "test no end point found",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/server.test.js.html#lineNumber16",
+    "test no end point found It return page not found in response",
+    "test"
+  ],
+  [
+    "test/server.test.js",
+    "test-file/test/server.test.js.html",
+    "test/server.test.js",
+    "testFile"
   ]
 ]
