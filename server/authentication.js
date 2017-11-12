@@ -10,8 +10,12 @@ const config = require('./config');
 
 function firebaseAuthMiddleware(req, res, next) {
     const authorization = req.header('Authorization');
-    console.log(` ---> ` + authorization);
-    if(config.authentication_enable){
+    logger.debug(` ---> ` + authorization);
+    logger.debug(` ---> ` + config.authentication_enable);
+    var checkAuth = Boolean(config.authentication_enable);
+    logger.debug(typeof checkAuth);
+    if(checkAuth){
+        logger.debug(` ---> ` + config.authentication_enable);
         if (authorization) {
             let token = authorization.split(' ');
             admin.auth().verifyIdToken(token[1])
@@ -29,6 +33,7 @@ function firebaseAuthMiddleware(req, res, next) {
             res.sendStatus(401);
         }
     } else {
+        logger.debug("Auth turn OFF");
         next();
     }  
 }

@@ -5,6 +5,8 @@
 var path = require("path");
 var express = require('express');
 var isAuthenticated = require("./authentication");
+var Validator = require("./validation/validator");
+
 var SqlController = require("./api/sql/sql.controller");
 var MongoDBController = require("./api/mongodb/mongodb.controller");
 
@@ -53,17 +55,16 @@ function configureRoutes(app){
     GET         /api/sql/:tableName/describe
     GET         /api/sql/tables
     */
-    app.get(API_SQL_URI_GP, isAuthenticated, SqlController.getAll);
-    app.post(API_SQL_URI_GP, isAuthenticated, SqlController.create);
-    app.get(API_SQL_URI_GP2, isAuthenticated, SqlController.getOne);
-    app.put(API_SQL_URI_GP2, isAuthenticated, SqlController.update);
-    app.delete(API_SQL_URI_GP2, isAuthenticated, SqlController.delete);
-    app.get(API_SQL_URI_COUNT, isAuthenticated, SqlController.count);
-    app.get(API_SQL_URI_EXIST, isAuthenticated, SqlController.isExist);
-    app.get(API_SQL_URI_PARENT_CHILD, isAuthenticated, SqlController.relationship);
-    app.post(API_SQL_URI_DYNAMIC, isAuthenticated, SqlController.dyamicSql);
-    app.get(API_SQL_URI_DESCRIBE, isAuthenticated, SqlController.describe);
-    app.get(API_SQL_URI_TABLES, isAuthenticated, SqlController.tables);
+    app.get(API_SQL_URI_GP, isAuthenticated, Validator, SqlController.getAll);
+    app.post(API_SQL_URI_GP, isAuthenticated, Validator, SqlController.create);
+    app.get(API_SQL_URI_GP2, isAuthenticated, Validator, SqlController.getOne);
+    app.put(API_SQL_URI_GP2, isAuthenticated, Validator, SqlController.update);
+    app.get(API_SQL_URI_COUNT, isAuthenticated, Validator, SqlController.count);
+    app.get(API_SQL_URI_EXIST, isAuthenticated, Validator, SqlController.isExist);
+    app.get(API_SQL_URI_PARENT_CHILD, isAuthenticated, Validator, SqlController.relationship);
+    app.post(API_SQL_URI_DYNAMIC, isAuthenticated, Validator, SqlController.dyamicSql);
+    app.get(API_SQL_URI_DESCRIBE, isAuthenticated, Validator, SqlController.describe);
+    app.get(API_SQL_URI_TABLES, isAuthenticated, Validator, SqlController.tables);
     
     /*
     mongodb
@@ -79,17 +80,16 @@ function configureRoutes(app){
     GET         /api/mongo/:collectionName/describe
     GET         /api/mongo/collections
     */
-    app.get(API_MONGODB_URI_GP, isAuthenticated, MongoDBController.getAll);
-    app.post(API_MONGODB_URI_GP, isAuthenticated, MongoDBController.create);
-    app.get(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.getOne);
-    app.put(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.update);
-    app.delete(API_MONGODB_URI_GP2, isAuthenticated, MongoDBController.delete);
-    app.get(API_MONGODB_URI_COUNT, isAuthenticated, MongoDBController.count);
-    app.get(API_MONGODB_URI_EXIST, isAuthenticated, MongoDBController.isExist);
-    app.get(API_MONGODB_URI_PARENT_CHILD, isAuthenticated, MongoDBController.relationship);
-    app.post(API_MONGODB_URI_DYNAMIC, isAuthenticated, MongoDBController.dyamicNoSql);
-    app.get(API_MONGODB_URI_DESCRIBE, isAuthenticated, MongoDBController.describe);
-    app.get(API_MONGODB_URI_TABLES, isAuthenticated, MongoDBController.tables);
+    app.get(API_MONGODB_URI_GP, isAuthenticated, Validator, MongoDBController.getAll);
+    app.post(API_MONGODB_URI_GP, isAuthenticated, Validator, MongoDBController.create);
+    app.get(API_MONGODB_URI_GP2, isAuthenticated, Validator, MongoDBController.getOne);
+    app.put(API_MONGODB_URI_GP2, isAuthenticated, Validator, MongoDBController.update);
+    app.get(API_MONGODB_URI_COUNT, isAuthenticated, Validator, MongoDBController.count);
+    app.get(API_MONGODB_URI_EXIST, isAuthenticated, Validator, MongoDBController.isExist);
+    app.get(API_MONGODB_URI_PARENT_CHILD, isAuthenticated, Validator, MongoDBController.relationship);
+    app.post(API_MONGODB_URI_DYNAMIC, isAuthenticated, Validator, MongoDBController.dyamicNoSql);
+    app.get(API_MONGODB_URI_DESCRIBE, isAuthenticated, Validator, MongoDBController.describe);
+    app.get(API_MONGODB_URI_TABLES, isAuthenticated, Validator, MongoDBController.tables);
     
     app.use(express.static(CLIENT_FOLDER));
 }
@@ -101,6 +101,7 @@ function errorHandler(app) {
     });
 
     app.use(function (err, req, res, next) {
+        console.log(err);
         res.status(500).sendFile(path.join(CLIENT_FOLDER + '/500.html'));
     });
 };

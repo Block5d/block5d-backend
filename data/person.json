@@ -1,0 +1,44 @@
+[
+    {
+        "first_name": "",
+        "last_name": "",
+        "identification_no": "",
+        "nationality": "",
+        "job_title": "",
+        "contactNo": "",
+        "projects": [],
+        "company": "",
+        "isEnabled" : true,
+        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
+        "created_date": ISODate("2017-01-15T17:17:43.882Z")
+
+    },
+    {
+        "first_name": "",
+        "last_name": "",
+        "identification_no": "",
+        "nationality": "",
+        "job_title": "",
+        "contactNo": "",
+        "projects": [],
+        "company": "",
+        "isEnabled" : true,
+        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
+        "created_date": ISODate("2017-01-15T17:17:43.882Z")
+
+    },
+    {
+        "first_name": "",
+        "last_name": "",
+        "identification_no": "",
+        "nationality": "",
+        "job_title": "",
+        "contactNo": "",
+        "projects": [],
+        "company": "",
+        "isEnabled" : true,
+        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
+        "created_date": ISODate("2017-01-15T17:17:43.882Z")
+
+    }
+]

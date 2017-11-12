@@ -2,7 +2,7 @@
 const domain_name = process.env.DOMAIN_NAME;
 module.exports = {
     domain_name: domain_name,
-    authentication_enable: process.env.AUTH_ENABLE,
+    authentication_enable: true,
     mongodb: process.env.MONGODB_URL,
     sqldb: process.env.SQLDB_URL,
     database: process.env.SQL_DBNAME,

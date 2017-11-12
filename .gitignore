@@ -44,3 +44,4 @@ Thumbs.db
 /server/tables.json
 
 package-lock.json
+.env

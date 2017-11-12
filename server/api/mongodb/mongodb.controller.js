@@ -4,15 +4,17 @@ var logger = require("../../util/logger");
 var MongoDatabase = require('../../mongohelper');
 
 exports.getAll = function (req, res) {
-    logger.debug ("get user");
+    logger.debug ("get All");
+    var users = [ { first_name: "", last_name: ""}]
+    res.status(200).json(users);
 }
 
 exports.register = function(req, res) {
-    logger.debug ("register user");
+    logger.debug ("register model");
 };
 
 exports.create = function (req, res) {
-    logger.debug ("list user ...");
+    logger.debug ("create ...");
     var users = [ { first_name: "", last_name: ""}]
     res.status(200).json(users);
 };
@@ -22,11 +24,9 @@ exports.getOne = function (req, res) {
 };
 
 exports.update = function (req, res) {
-    logger.debug ("change password");
-};
-
-exports.delete = function (req, res) {
-    logger.debug ("profile");
+    logger.debug ("update");
+    var users = [ { first_name: "", last_name: ""}]
+    res.status(200).json(users);
 };
 
 exports.count = function (req, res) {
@@ -55,6 +55,7 @@ exports.tables = function (req, res) {
 };
 
 
+/*
 function handleErr(res) {
     handleErr(res, null);
 }
@@ -73,7 +74,7 @@ function handler404(res) {
     res
         .status(404)
         .json({message: "User not found!"});
-}
+}*/
 
 function returnResults(results, res) {
     res.send(results);

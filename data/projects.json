@@ -1,0 +1,41 @@
+[
+{
+    "name": "NEXUS INTERNATIONAL SCHOOL SINGAPORE",
+    "start_date": "",
+    "end_date": "",
+    "scope_of_work": [ {"desc": "", "phase": "" }, {"desc": "", "phase": "" }],
+    "client_id": "",
+    "project_manager": "",
+    "architect": "",
+    "design_architect": "",
+    "quantity_surveyor": "",
+    "cs_engineer": "",
+    "service_engineer": "",
+    "main_contractor": [],
+    "subcontractor": [],
+    "supplier": [],
+    "isEnabled" : true,
+    "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
+    "created_date": ISODate("2017-01-15T17:17:43.882Z")
+},
+{
+    "name": "LEXUS INTERNATIONAL SCHOOL SINGAPORE",
+    "start_date": "",
+    "end_date": "",
+    "scope_of_work": [ {"desc": "", "phase": "" }, {"desc": "", "phase": "" }],
+    "client_id": "",
+    "project_manager": "",
+    "architect": "",
+    "design_architect": "",
+    "quantity_surveyor": "",
+    "cs_engineer": "",
+    "service_engineer": "",
+    "main_contractor": [],
+    "subcontractor": [],
+    "supplier": [],
+    "isEnabled" : true,
+    "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
+    "created_date": ISODate("2017-01-15T17:17:43.882Z")
+
+}
+]
