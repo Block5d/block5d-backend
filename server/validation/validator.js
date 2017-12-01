@@ -9,10 +9,10 @@ var logger = require("../util/logger");
  * @param {*} next 
  */
 function validate(req, res, next){
-    //logger.debug("validation ....");
-    //logger.debug(req.originalUrl);
+    logger.debug("validation ....");
+    logger.debug(req.originalUrl);
     var model = HttpUtil.getModelPath(req.originalUrl);
-    //logger.debug(model);
+    logger.debug(model);
     var httpMethod = req.method;
     var reqObj = req.body;
     
@@ -23,10 +23,11 @@ function validate(req, res, next){
 
             let errors = toValidate(reqObj, constraints);
             console.log(errors);
-            if(!errors){
-                res.status(500).json(error);
+            if(errors){
+                res.status(500).json(errors);
+            }else{
+                next();
             }
-            next();
         }catch(err){
             console.log(err);
             res.status(500).json({error: err, message: "trying to post/put/patch unsupported model"});
