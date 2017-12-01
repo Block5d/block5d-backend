@@ -28,20 +28,19 @@ module.exports = {
 };
 
 function configureRoutes(app){
-    console.log("...." +API_MONGODB_URI_GP);
-    /*
-    mongodb
-    GET         /api/v1/mongodb/:collectionName
-    POST        /api/v1/mongodb/:collectionName
-    GET         /api/v1/mongodb/:collectionName/:id
-    PUT         /api/v1/mongodb/:collectionName/:id
-    DELETE         /api/v1/mongodb/:collectionName/:id
-    GET         /api/v1/mongodb/:collectionName/count
-    GET         /api/v1/mongodb/:collectionName/search
-    GET         /api/v1/mongodb/:collectionName/exists/:id
-    */
 
-    // find all
+    /**
+     * @swagger
+     * /api/v1/mongodb/collections:
+     *   get:
+     *     description: Get All collections record
+     *     tags: [Result]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Result
+     */
     app.get(API_MONGODB_URI_GP, isAuthenticated, Validator, function(req,res){
         logger.debug("get All");
 
@@ -62,7 +61,18 @@ function configureRoutes(app){
         });
     });
 
-    // save record
+    /**
+     * @swagger
+     * /api/v1/mongodb/collections:
+     *   get:
+     *     description: Insert one record
+     *     tags: [Result]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Result
+     */
     app.post(API_MONGODB_URI_GP, isAuthenticated, Validator, function(req, res) {
         logger.debug(" .... insert one....");
         MongoDatabase(function(err, dbs) {

@@ -9,7 +9,29 @@ var helmet = require("helmet");
 var session = require('express-session');
 const csurf = require("csurf");
 var logger = require("./util/logger");
+var config = require("./config");
 const routes = require("./routes");
+var swaggerJSDoc = require('swagger-jsdoc');
+
+var swaggerDefinition = {
+    info: { // API informations (required)
+        title: 'Block5D API', // Title (required)
+        version: '1.0.0', // Version (required)
+        description: 'Block5D Progressive Payment Web App API', // Description (optional)
+    },
+    basePath: '/', // Base path (optional)
+};
+
+var options = {
+    // Import swaggerDefinitions
+    swaggerDefinition: swaggerDefinition,
+    // Path to the API docs
+    apis: ['./routes*.js', './parameters.yaml'],
+};
+
+// Initialize swagger-jsdoc -> returns validated swagger spec in json format
+var swaggerSpec = swaggerJSDoc(options);
+
 
 var app = express();
 
@@ -34,6 +56,12 @@ if (app.get('env') === 'production') {
 }
 
 app.use(session(sess));
+
+// Serve swagger docs the way you like (Recommendation: swagger-tools)
+app.get('/api-docs.json', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
+});
 
 routes.init(app);
 routes.errorHandler(app);
