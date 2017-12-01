@@ -4,8 +4,12 @@
  */
 var path = require("path");
 var express = require('express');
+var mongo = require('mongodb');
 var isAuthenticated = require("./authentication");
 var Validator = require("./validation/validator");
+var MongoDatabase = require('./mongohelper');
+const logger = require('./util/logger');
+const HttpUtil = require('./util/HttpUtil');
 
 const API_V1_ROOT = "/api/v1/";
 
@@ -15,18 +19,16 @@ const CLIENT_FOLDER = path.join(__dirname + '/../public');
 
 const API_MONGODB_URI_GP = `${API_V1_ROOT}${API_ROOT_MONGODB}:collectionName`; // GET and POST
 const API_MONGODB_URI_GP2 = `${API_V1_ROOT}${API_ROOT_MONGODB}:collectionName/:id`; // GET and PUT and DELETE
-const API_MONGODB_URI_COUNT = `${API_V1_ROOT}${API_ROOT_MONGODB}:collectionName/count`; // COUNT
-const API_MONGODB_URI_SEARCH = `${API_V1_ROOT}${API_ROOT_MONGODB}:collectionName/search`; // search with criteria
 const API_MONGODB_URI_EXIST = `${API_V1_ROOT}${API_ROOT_MONGODB}:collectionName/exists/:id`; // exists
-const API_MONGODB_URI_PARENT_CHILD = `${API_V1_ROOT}${API_ROOT_MONGODB}:parentCollection/:id/:childCollection/:child_field_name`; // parent and child relationship
+const API_MONGODB_URI_SEARCH = `${API_V1_ROOT}search`; // search with criteria
 
 module.exports = {
     init: configureRoutes,
     errorHandler: errorHandler    
 };
 
-function configureRoutes(app, dbs){
-
+function configureRoutes(app){
+    console.log("...." +API_MONGODB_URI_GP);
     /*
     mongodb
     GET         /api/v1/mongodb/:collectionName
@@ -37,139 +39,163 @@ function configureRoutes(app, dbs){
     GET         /api/v1/mongodb/:collectionName/count
     GET         /api/v1/mongodb/:collectionName/search
     GET         /api/v1/mongodb/:collectionName/exists/:id
-    GET         /api/v1/mongodb/:parentCollection/:id/:childCollection/:child_field_name
     */
 
     // find all
-    app.get(API_MONGODB_URI_GP, isAuthenticated, Validator, (req,res)=>{
+    app.get(API_MONGODB_URI_GP, isAuthenticated, Validator, function(req,res){
         logger.debug("get All");
-        let model = HttpUtil.getModelPath(req.originalUrl);
-        logger.debug(model);
 
-        //if(typeof req.session.firebaseAuthUserid !== 'undefined')
-        //    logger.debug(req.session.firebaseAuthUserid);
-        let projection = req.body;
-
-        let dbModel = dbs.instance.collection(model);
-        dbModel.find({}, projection).toArray(function (err, result) {
+        MongoDatabase(function(err, dbs){
             if(err)
-                handleErr(res,err);
-            returnResults(result,res);
+                logger.error(err);
+            let model = HttpUtil.getModelPath(req.originalUrl);
+            logger.debug(model);
+
+            let projection = req.body;
+
+            let dbModel = dbs.instance.collection(model);
+            dbModel.find({}, projection).toArray(function (err, result) {
+                if(err)
+                    handleErr(res,err);
+                returnResults(result,res);
+            });
         });
     });
 
     // save record
-    app.post(API_MONGODB_URI_GP, isAuthenticated, Validator, (req,res)=> {
-        logger.debug("insert one");
-        let model = HttpUtil.getModelPath(req.originalUrl);
-        let insertBody = req.body;
-        let query = insertBody.query;
-
-        let dbModel = dbs.instance.collection(model);
-        dbModel.count(query, function (err, result) {
-            if (result > 0){
-                handleErr(res, new Error('Record already exist.'));
-            }else {
-                delete insertBody.query;
-                dbModel.insertOne(insertBody, function (err, result) {
-                    if (err)
-                        handleErr(res, err);
-                    returnResults(result, res);
-                });
-            }
+    app.post(API_MONGODB_URI_GP, isAuthenticated, Validator, function(req, res) {
+        logger.debug(" .... insert one....");
+        MongoDatabase(function(err, dbs) {
+            let model = HttpUtil.getModelPath(req.originalUrl);
+            var insertBody = req.body;
+            var queryObj = {};
+            // terrible hack !
+            JSON.parse(JSON.stringify(insertBody.query), (key, value) => {
+                JSON.parse(value, (key2, value2) => {
+                    if(key2)
+                        queryObj[key2] = value2;
+                })
+            });
+            let dbModel = dbs.instance.collection(model);
+            logger.debug(queryObj);
+            logger.debug(typeof queryObj);
+            dbModel.find(queryObj).count( function (err, result) {
+                console.log(result);
+                if (parseInt(result) > 0) {
+                    handleErr(res, {error_message: "Record already exist"});
+                } else {
+                    delete insertBody.query;
+                    dbModel.insertOne(insertBody, function (err, result) {
+                        if (err)
+                            handleErr(res, err);
+                        returnResults(result, res);
+                    });
+                }
+            });
         });
     });
 
     // get single record
-    app.get(API_MONGODB_URI_GP2, isAuthenticated, Validator, (req,res)=>{
-        logger.debug("insert one");
+    app.get(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
+        logger.debug("Get One record");
         let model = HttpUtil.getModelPath(req.originalUrl);
-        let recordId = req.query.id;
-        let query = { _id: recordId};
-        let dbModel = dbs.instance.collection(model);
-        dbModel.findOne(query, function (err, result) {
-            if (err)
-                handleErr(res, err);
-            returnResults(result, res);
+        let recordId = req.params.id;
+        logger.debug(recordId);
+        let o_id = new mongo.ObjectID(recordId);
+        let query = { "_id": o_id};
+        MongoDatabase(function(err, dbs) {
+            let dbModel = dbs.instance.collection(model);
+            console.log(query);
+            dbModel.findOne(query, function (err, result) {
+                if (err)
+                    handleErr(res, err);
+                console.log(result);
+                returnResults(result, res);
+            });
         });
     });
 
     // update record
-    app.put(API_MONGODB_URI_GP2, isAuthenticated, Validator, (req,res)=>{
+    app.put(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
+        logger.debug("Update One record");
         // Modify and return the modified document
         let model = HttpUtil.getModelPath(req.originalUrl);
         let updateBody = req.body;
-        let recordId = req.query.id;
-        let query = { _id: recordId};
-        let dbModel = dbs.instance.collection(model);
-        dbModel.findOneAndUpdate(query, {$set: updateBody}, {
-            returnOriginal: false
-            , sort: [[a,1]]
-            , upsert: true
-        }, function(err, result) {
-            if (err)
-                handleErr(res, err);
-            returnResults(result, res);
+        let recordId = req.params.id;
+        let o_id = new mongo.ObjectID(recordId);
+        let query = { "_id": o_id};
+        MongoDatabase(function(err, dbs) {
+            let dbModel = dbs.instance.collection(model);
+            dbModel.findOneAndUpdate(query, {$set: updateBody}, {
+                returnOriginal: false
+                , upsert: true
+            }, function (err, result) {
+                if (err)
+                    handleErr(res, err);
+                returnResults(result, res);
+            });
         });
     });
 
-    app.delete(API_MONGODB_URI_GP2, isAuthenticated, Validator, (req,res)=>{
+    /**
+     * delete record
+     */
+    app.delete(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
+        logger.debug("Delete One record");
         // Remove and return a document
         let model = HttpUtil.getModelPath(req.originalUrl);
-        let recordId = req.query.id;
-        let query = { _id: recordId};
-        let dbModel = dbs.instance.collection(model);
-        dbModel.findOneAndDelete(query, function(err, result) {
-            if (err)
-                handleErr(res, err);
-            returnResults(result, res);
+        let recordId = req.params.id;
+        let o_id = new mongo.ObjectID(recordId);
+        let query = { "_id": o_id};
+        MongoDatabase(function(err, dbs) {
+            let dbModel = dbs.instance.collection(model);
+            dbModel.findOneAndDelete(query, function (err, result) {
+                if (err)
+                    handleErr(res, err);
+                returnResults(result, res);
+            });
         });
     });
 
-    app.get(API_MONGODB_URI_COUNT, isAuthenticated, Validator, (req,res)=>{
-        let model = HttpUtil.getModelPath(req.originalUrl);
-        let dbModel = dbs.instance.collection(model);
-        dbModel.count({}, function (err, result) {
-            if (err)
-                handleErr(res, err);
-            returnResults(result, res);
-        });
-    });
-
-    app.get(API_MONGODB_URI_SEARCH, isAuthenticated, Validator, (req,res)=>{
+    app.get(API_MONGODB_URI_SEARCH, isAuthenticated, Validator, function(req,res){
         logger.debug("search by criteria");
-        let model = HttpUtil.getModelPath(req.originalUrl);
+        let model = req.query.collectionName;
         let searchCriteria = req.body.criteria;
         let projection = req.body.projection;
 
         logger.debug(searchCriteria);
-        let dbModel = dbs.instance.collection(model);
-        dbModel.find(searchCriteria).project(projection).toArray(function (err, result) {
-            if(err)
-                handleErr(res,err);
-            returnResults(result,res);
+        MongoDatabase(function(err, dbs) {
+            let dbModel = dbs.instance.collection(model);
+            dbModel.find(searchCriteria).project(projection).toArray(function (err, result) {
+                if (err)
+                    handleErr(res, err);
+                returnResults(result, res);
+            });
         });
     });
 
     // check if record exist
-    app.get(API_MONGODB_URI_EXIST, isAuthenticated, Validator, (req,res)=>{
-        let recordId = req.query.id;
-        let query = { _id: recordId};
+    app.get(API_MONGODB_URI_EXIST, isAuthenticated, Validator, function(req,res){
         let model = HttpUtil.getModelPath(req.originalUrl);
-        let dbModel = dbs.instance.collection(model);
-        dbModel.count(query, function (err, result) {
-            if (err)
-                handleErr(res, err);
-            returnResults(result, res);
+        let recordId = req.params.id;
+        let o_id = new mongo.ObjectID(recordId);
+        let query = { "_id": o_id};
+        MongoDatabase(function(err, dbs) {
+            let dbModel = dbs.instance.collection(model);
+            dbModel.count(query, function (err, result) {
+                if (err)
+                    handleErr(res, err);
+                returnResults(result, res);
+            });
         });
-
-    });
-
-    app.get(API_MONGODB_URI_PARENT_CHILD, isAuthenticated, Validator, (req,res)=>{
-
     });
 
     app.use(express.static(CLIENT_FOLDER));
+
+    function handleErr (res, err){
+        console.log('handleErr');
+        res.status(500).json(err);
+    }
 
     function returnResults(results, res) {
         res.status(200).json(results);

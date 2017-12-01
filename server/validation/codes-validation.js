@@ -1,17 +1,26 @@
-var Legalize = require("legalize");
 
-var schema = {
-    /*
-    firstName:
-        Legalize.string().minLength(1).maxLength(30).required(),
-    lastName:
-        Legalize.string().minLength(1).maxLength(30).required(),
-    age:
-        Legalize.number().integer().min(18),
-    sex:
-        Legalize.string().sanitizeBefore(function (value) {
-        		value.toLowerCase();
-        }).valid("male", "female").optional(),*/
+
+var constraints = {
+    "code_details.code": {
+        presence: true
+    },
+    "code_details.code": {
+        format: {
+            // Must be numbers followed by a name
+            pattern: "^[A-Z.\\s_-]+$",
+            message: "^The code must be uppercase."
+        }
+    },
+    "category_details.categoryCode": {
+        presence: true
+    },
+    "category_details.categoryCode": {
+        format: {
+            // Must be numbers followed by a name
+            pattern: "^[A-Z.\\s_-]+$",
+            message: "^The code must be uppercase."
+        }
+    }
 };
 
-exports.schema = schema;
+module.exports = constraints;

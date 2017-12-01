@@ -1,14 +1,14 @@
 [
 {
   "_id": 1,
+  "is_category" : true,
   "code_details": {
      "code_desc": "",
      "code": ""
   },
   "category_details": {
      "categoryDesc": "Countries",
-     "categoryCode": "CTY",
-     "is_category" : true	
+     "categoryCode": "CTY"
   },
   
   "modified_date": "1980-01-02T00:00:00.000Z",
@@ -19,14 +19,14 @@
 },
 {
   "_id": 2,
+  "is_category" : false,
   "code_details": {
      "code_desc": "Malaysia",
      "code": "MY"
   },
   "category_details": {
      "categoryDesc": "",
-     "categoryCode": "",
-     "is_category" : false	
+     "categoryCode": ""
   },
   
   "modified_date": "1980-01-02T00:00:00.000Z",

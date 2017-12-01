@@ -10,7 +10,7 @@ var session = require('express-session');
 const csurf = require("csurf");
 var logger = require("./util/logger");
 const routes = require("./routes");
-var MongoDatabase = require('./mongohelper');
+
 var app = express();
 
 app.use(compression());
@@ -35,9 +35,7 @@ if (app.get('env') === 'production') {
 
 app.use(session(sess));
 
-MongoDatabase(function(err, dbs){
-    routes.init(app,dbs);
-});
+routes.init(app);
 routes.errorHandler(app);
 
 app.use(function(err, req, res, next){

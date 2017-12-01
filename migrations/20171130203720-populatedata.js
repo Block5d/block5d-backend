@@ -44,7 +44,7 @@ exports.up = function(db, callback) {
     db.insert(collectionNames[5], require('../data/project-smart-contracts.json'), callback);
     db.insert(collectionNames[6], require('../data/project-submission.json'), callback);
     db.insert(collectionNames[7], require('../data/projects.json'), callback);
-    db.insert(collectionNames[8], require('../data/support-docs.json'), callback);
+    db.insert(collectionNames[8], require('../data/supporting-docs.json'), callback);
     db.insert(collectionNames[9], require('../data/upload-models.json'), callback);
     db.insert(collectionNames[10], require('../data/user-group.json'), callback);
     db.insert(collectionNames[11], require('../data/user-permission.json'), callback);
