@@ -64,7 +64,7 @@ function configureRoutes(app){
     /**
      * @swagger
      * /api/v1/mongodb/collections:
-     *   get:
+     *   post:
      *     description: Insert one record
      *     tags: [Result]
      *     produces:
@@ -105,7 +105,18 @@ function configureRoutes(app){
         });
     });
 
-    // get single record
+    /**
+     * @swagger
+     * /api/v1/mongodb/collections/:id:
+     *   get:
+     *     description: Get one record
+     *     tags: [Result]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Result
+     */
     app.get(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
         logger.debug("Get One record");
         let model = HttpUtil.getModelPath(req.originalUrl);
@@ -125,7 +136,18 @@ function configureRoutes(app){
         });
     });
 
-    // update record
+    /**
+     * @swagger
+     * /api/v1/mongodb/collections/:id:
+     *   put:
+     *     description: Update record
+     *     tags: [Result]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Result
+     */
     app.put(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
         logger.debug("Update One record");
         // Modify and return the modified document
@@ -148,7 +170,16 @@ function configureRoutes(app){
     });
 
     /**
-     * delete record
+     * @swagger
+     * /api/v1/mongodb/collections/:id:
+     *   delete:
+     *     description: Delete record from collections
+     *     tags: [Result]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: Result
      */
     app.delete(API_MONGODB_URI_GP2, isAuthenticated, Validator, function(req,res){
         logger.debug("Delete One record");
