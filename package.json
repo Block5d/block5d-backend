@@ -12,9 +12,9 @@
     "start": "npm install; node server/server.js",
     "esdoc": "./node_modules/.bin/esdoc",
     "test": "jest --coverage",
-    "dbup": "db-migrate up --config ./database.json",
-    "dbdown": "db-migrate down --config ./database.json",
-    "dbreset": "db-migrate reset --config ./database.json",
+    "dbup": "./node_modules/.bin/db-migrate up --config ./database.json",
+    "dbdown": "./node_modules/.bin/db-migrate down --config ./database.json",
+    "dbreset": "./node_modules/.bin/db-migrate reset --config ./database.json",
     "createdb": "./node_modules/.bin/cross-var db-migrate db:create $DB_MIGRATE_DB_NAME",
     "dropdb": "./node_modules/.bin/cross-var db-migrate db:drop $DB_MIGRATE_DB_NAME"
   },

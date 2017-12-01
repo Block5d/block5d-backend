@@ -1,7 +1,3 @@
-/**
- * Routes
- * @author Kenneth Phang
- */
 var path = require("path");
 var express = require('express');
 var mongo = require('mongodb');
@@ -60,6 +56,22 @@ function configureRoutes(app){
             });
         });
     });
+
+    /**
+     * @swagger
+     * definitions:
+     *   Login:
+     *     required:
+     *       - username
+     *       - password
+     *     properties:
+     *       username:
+     *         type: string
+     *       password:
+     *         type: string
+     *       path:
+     *         type: string
+     */
 
     /**
      * @swagger
