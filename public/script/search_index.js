@@ -294,9 +294,9 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "server/api/mongodb/mongodb.controller.js",
-    "file/server/api/mongodb/mongodb.controller.js.html",
-    "server/api/mongodb/mongodb.controller.js",
+    "server/api/mongodb/restql.controller.js",
+    "file/server/api/mongodb/restql.controller.js.html",
+    "server/api/mongodb/restql.controller.js",
     "file"
   ],
   [

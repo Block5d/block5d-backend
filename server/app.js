@@ -2,13 +2,15 @@
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser')
-var compression = require('compression')
+var cookieParser = require('cookie-parser');
+var compression = require('compression');
 var cors = require("cors");
 var helmet = require("helmet");
-var csurf = require("csurf");
+var session = require('express-session');
+const csurf = require("csurf");
 var logger = require("./util/logger");
 const routes = require("./routes");
+var MongoDatabase = require('./mongohelper');
 var app = express();
 
 app.use(compression());
@@ -18,14 +20,28 @@ app.disable('x-power-by');
 app.use(cors({optionSuccessStatus: 200}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(cookieParser())
+app.use(cookieParser());
 //app.use(csurf({ cookie : true}));
 
-routes.init(app);
+var sess = {
+    secret: 'zaqwsxcde%T1',
+    cookie: {}
+};
+
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1); // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess));
+
+MongoDatabase(function(err, dbs){
+    routes.init(app,dbs);
+});
 routes.errorHandler(app);
 
 app.use(function(err, req, res, next){
-    if(err.code !== 'EBADCSRFTOKEN') return next(err)
+    if(err.code !== 'EBADCSRFTOKEN') return next(err);
     logger.debug("app use");
     res.status(403);
     res.send('ERROR CSURF !');

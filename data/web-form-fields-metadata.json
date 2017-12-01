@@ -1,0 +1,49 @@
+[
+{
+  "_id": 1,
+   "type": "textfield",
+   "input": true,
+   "tableView": true,
+   "inputType": "text",
+   "inputMask": "",
+   "label": "First Name",
+   "key": "firstName",
+    "placeholder": "Enter your first name",
+    "prefix": "",
+    "suffix": "",
+    "multiple": false,
+    "defaultValue": "",
+    "protected": false,
+    "unique": false,
+    "persistent": true,
+    "conditional": {
+	"show": "",
+	"when": null,
+	"eq": ""
+    }
+},
+{
+  "_id": 2,
+   "type": "textfield",
+   "input": true,
+   "tableView": true,
+   "inputType": "text",
+   "inputMask": "",
+   "label": "Last Name",
+   "key": "lastName",
+    "placeholder": "Enter your last name",
+    "prefix": "",
+    "suffix": "",
+    "multiple": false,
+    "defaultValue": "",
+    "protected": false,
+    "unique": false,
+    "persistent": true,
+    "conditional": {
+	"show": "",
+	"when": null,
+	"eq": ""
+    }
+}
+
+]

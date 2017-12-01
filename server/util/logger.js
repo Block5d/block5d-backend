@@ -3,7 +3,7 @@
  * @author Kenneth Phanf
  */
 'use strict';
- const debugenv = (process.env.APP_DEBUG === 'true');
+const debugenv = (process.env.APP_DEBUG === 'true');
 var bunyan = require('bunyan');
 let bunyanlogger = bunyan.createLogger({
     name: 'block5d-backend',

@@ -21,6 +21,7 @@ function firebaseAuthMiddleware(req, res, next) {
             admin.auth().verifyIdToken(token[1])
             .then((decodedToken) => {
                 logger.debug(decodedToken);
+                req.session.firebaseAuthUserid = admin.firebase.auth().currentUser.uid;
                 res.locals.user = decodedToken;
                 next();
             })

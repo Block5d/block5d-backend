@@ -1,41 +1,88 @@
-[
-{
-    "name": "NEXUS INTERNATIONAL SCHOOL SINGAPORE",
-    "start_date": "",
-    "end_date": "",
-    "scope_of_work": [ {"desc": "", "phase": "" }, {"desc": "", "phase": "" }],
-    "client_id": "",
-    "project_manager": "",
-    "architect": "",
-    "design_architect": "",
-    "quantity_surveyor": "",
-    "cs_engineer": "",
-    "service_engineer": "",
-    "main_contractor": [],
-    "subcontractor": [],
-    "supplier": [],
-    "isEnabled" : true,
-    "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-    "created_date": ISODate("2017-01-15T17:17:43.882Z")
-},
-{
-    "name": "LEXUS INTERNATIONAL SCHOOL SINGAPORE",
-    "start_date": "",
-    "end_date": "",
-    "scope_of_work": [ {"desc": "", "phase": "" }, {"desc": "", "phase": "" }],
-    "client_id": "",
-    "project_manager": "",
-    "architect": "",
-    "design_architect": "",
-    "quantity_surveyor": "",
-    "cs_engineer": "",
-    "service_engineer": "",
-    "main_contractor": [],
-    "subcontractor": [],
-    "supplier": [],
-    "isEnabled" : true,
-    "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-    "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-}
-]
+[{
+  "_id": 1,
+  "name": "ABC School",
+  "start_date": "1980-01-02T00:00:00.000Z",
+  "end_date": "1980-01-02T00:00:00.000Z",
+  "project_members": {
+     "client_company": 1,
+     "project_manager_person": 1,
+     "architect_person": 1,
+     "design_architect_person": 1,
+     "quantity_surveyor_person": 1,
+     "cs_engineer_person": 1,
+     "service_engineer_person": 1,
+     "main_contractor_company": 1,
+     "subcontractors": [
+        "1",
+        "2",
+        "3"
+     ],
+     "suppliers": [
+	 {
+	   "_id": 1
+	 },
+	 {
+	   "_id": 1
+	 }
+      ]
+  },
+  "contacts": {
+	"contact_no": 565654665,
+	"company_email": "test@abc.com",
+	"fax_no": 432432434
+  },
+  "project_country": "CN",
+  "project_progress": [{
+	"site_possession": "",
+        "completion_date" : "1980-01-02T00:00:00.000Z",
+        "contract_currency": 1,
+        "contract_sum": 10000000,
+ 	"contract_duration_base": "",
+        "contract_duration_remaining": "",
+        "pct_work_done": 0.20,
+        "remarks": ["", ""],
+        "site_issues": ["", ""],
+        "modified_date": "1980-01-02T00:00:00.000Z",
+  	"created_date": "1980-01-02T00:00:00.000Z",
+  	"created_by": "Kenneth",
+  	"modified_by": "Kenneth"
+   },
+   {
+	"site_possession": "",
+        "completion_date" : "1980-01-02T00:00:00.000Z",
+        "contract_currency": 1,
+        "contract_sum": 10000000,
+ 	"contract_duration_base": "",
+        "contract_duration_remaining": "",
+        "pct_work_done": 0.20,
+        "remarks": ["", ""],
+        "site_issues": ["", ""],
+        "modified_date": "1980-01-02T00:00:00.000Z",
+  	"created_date": "1980-01-02T00:00:00.000Z",
+  	"created_by": "Kenneth",
+  	"modified_by": "Kenneth"
+   }
+   ],
+   "project_monitoring": [
+   {
+	"desc": "",
+        "planned_start_date" : "1980-01-02T00:00:00.000Z",
+        "actual_start": "1980-01-02T00:00:00.000Z",
+        "planned_end_date": "1980-01-02T00:00:00.000Z",
+ 	"actual_end_date": "1980-01-02T00:00:00.000Z",
+        "pct_completed": 0.20,
+        "pct_completed_planned": 0.20,
+        "pct_completed_actual": 0.20,
+	"pct_completed_1wktarget": 0.20,
+        "remarks": "",
+        "modified_date": "1980-01-02T00:00:00.000Z",
+  	"created_date": "1980-01-02T00:00:00.000Z",
+  	"created_by": "Kenneth",
+  	"modified_by": "Kenneth"
+   }
+   ],
+  "modified_date": "1980-01-02T00:00:00.000Z",
+  "created_date": "1980-01-02T00:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}]

@@ -1,0 +1,21 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "form_id": "1",
+  "data_collection_field_name": "user_id",
+  "is_complex_type": false,
+  "complex_form_fields": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "category_id": 1,
+  "field_dep": "1",
+  "createdAt": "2014-06-24T00:00:00.000Z",
+  "modifiedAt": "2014-06-24T00:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
+]

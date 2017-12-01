@@ -1,0 +1,28 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "workflow": [
+    {
+      "from_status": "P",
+      "to_status": "OH",
+      "rules": "rules1",
+      "action": "In progress"
+    },
+    {
+      "from_status": "OH",
+      "to_status": "C",
+      "rules": "rules1",
+      "action": "In Review"
+    }
+  ],
+  "statuses": [
+    {"Desc":"Pending", "Code": "P"},
+    {"Desc":"on hold", "Code": "OH"},
+    {"Desc":"In review", "Code": "IR"},
+    {"Desc":"Completed", "Code": "C"}
+  ],
+  "createdAt": "2014-06-24T16:00:00.000Z",
+  "modifiedAt": "2014-06-24T16:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}]

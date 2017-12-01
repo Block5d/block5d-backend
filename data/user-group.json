@@ -1,0 +1,21 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "group_name": "Group 1",
+  "members": [
+    {
+      "_id": 1
+    },
+    {
+      "_id": 2
+    },
+    {
+      "_id": 3
+    }
+  ],
+  "createdAt": "2014-06-24T16:00:00.000Z",
+  "modifiedAt": "2014-06-24T16:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
+]

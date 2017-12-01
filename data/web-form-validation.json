@@ -1,0 +1,45 @@
+[
+{
+  "_id": 1,
+  "form_id" : 1,
+  "field_id": 1,
+  "validate": {
+	  "required": true,
+	  "minLength": 2,
+	  "maxLength": 10,
+	  "pattern": "",
+	  "custom": "",
+	  "customPrivate": false
+  }
+},
+{
+	"_id": 2,
+	"form_id": 1,
+	"field_id": 2,
+	"validate": {
+		"required": true,
+		"minLength": 2,
+		"maxLength": 10,
+		"pattern": "",
+		"custom": [
+			{
+				"field_key": "firstName",
+				"rules": "Legalize.string().minLength(1).maxLength(30).required()"
+			},
+			{
+				"field_key": "lastName",
+				"rules": "Legalize.string().minLength(1).maxLength(30).required()"
+			},
+			{
+				"field_key": "age",
+				"rules": "Legalize.number().integer().min(18)"
+			},
+			{
+				"field_key": "sex",
+				"rules": "Legalize.string().sanitizeBefore(function (value)"
+			}
+		],
+		"customPrivate": true
+	}
+}
+]

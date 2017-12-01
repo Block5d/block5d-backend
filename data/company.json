@@ -1,29 +1,42 @@
-[
-    {
-        "name": "",
-        "reg_no": "",
-        "type": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    },
-    {
-        "name": "",
-        "reg_no": "",
-        "type": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    },
-    {
-        "name": "",
-        "reg_no": "",
-        "type": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    }
+[{
+		"_id": 1,
+		"company_name": "ABC Ltd",
+		"company_reg_no": "35355435",
+		"contact": {
+			"phone_no": 565654665,
+			"company_email": "test@abc.com",
+			"fax_no": 43242432
+		},
+		"company_type": "Limited",
+		"address_1": "Napier Rd",
+		"address_2": "Blk 33 #11-29",
+		"address_3": "Singapore",
+		"postal_code": 43243243,
+		"city": "Singapore",
+		"country_origin": "CN",
+		"modified_date": "1980-01-02T00:00:00.000Z",
+		"created_date": "1980-01-02T00:00:00.000Z",
+		"created_by": "Kenneth",
+		"modified_by": "Kenneth"
+	},
+	{
+		"_id": 2,
+		"company_name": "ABCB Pte Ltd",
+		"company_reg_no": "35355435",
+		"contact": {
+			"phone_no": 565654665,
+			"company_email": "test@abc.com",
+			"fax_no": 43242432
+		},
+		"company_type": "Limited",
+		"address_1": "Napier Rd",
+		"address_2": "Blk 33 #11-29",
+		"address_3": "Singapore",
+		"postal_code": 43243243,
+		"country_origin": "CN",
+		"modified_date": "1980-01-02T00:00:00.000Z",
+		"created_date": "1980-01-02T00:00:00.000Z",
+		"created_by": "Kenneth",
+		"modified_by": "Kenneth"
+	}
 ]

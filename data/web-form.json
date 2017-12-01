@@ -1,0 +1,41 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "form_name": "Inspection Form",
+  "section": [
+    {
+      "name": "Customer Details",
+      "fields": [
+        {
+          "web_field_id": "1"
+        },
+        {
+          "web_field_id": "2"
+        },
+        {
+          "web_field_id": "3"
+        }
+      ]
+    },
+    {
+      "name": "Contact Details",
+      "fields": [
+        {
+          "web_field_id": "4"
+        },
+        {
+          "web_field_id": "5"
+        },
+        {
+          "web_field_id": "6"
+        }
+      ]
+    }
+  ],
+  "api_endpoint": "http://localhost:4201/api/inspection_form",
+  "createdAt": "2014-06-24T16:00:00.000Z",
+  "modifiedAt": "2014-06-24T16:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
+]

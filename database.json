@@ -1,0 +1,13 @@
+{
+  "defaultEnv": "development",
+  "development": {
+    "driver": "mongodb",
+    "database": {"ENV": "DB_MIGRATE_DB_NAME"},
+    "host": {"ENV": "DB_MIGRATE_HOST"}
+  },
+  "production": {
+    "driver": "mongodb",
+    "database": {"ENV": "DB_MIGRATE_DB_NAME"},
+    "host": {"ENV": "DB_MIGRATE_HOST"}
+  }
+}

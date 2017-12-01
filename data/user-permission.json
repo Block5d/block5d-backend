@@ -1,0 +1,50 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "permission_name": "Permission 1",
+  "group": [
+    {
+      "_id": 1
+    },
+    {
+      "_id": 2
+    },
+    {
+      "_id": 3
+    }
+  ],
+  "functions": [
+    {
+      "route": "/test",
+      "action": [
+        "add",
+        "edit",
+        "delete",
+        "search"
+      ]
+    },
+    {
+      "route": "/profile",
+      "action": [
+        "add",
+        "edit",
+        "delete",
+        "search"
+      ]
+    },
+    {
+      "route": "/users",
+      "action": [
+        "add",
+        "edit",
+        "delete",
+        "search"
+      ]
+    }
+  ],
+  "createdAt": "2014-06-24T16:00:00.000Z",
+  "modifiedAt": "2014-06-24T16:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
+]

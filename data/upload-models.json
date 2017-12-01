@@ -1,0 +1,18 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "as_built_model": {
+    "id": "1",
+    "autodesk_urn": "2332sdfd3",
+    "filename": "test.rvt"
+  },
+  "design_model": {
+    "id": "2",
+    "autodesk_urn" : "23cdcd323213433",
+    "filename": "test.rvt"
+  },
+  "createdAt": "2014-06-24T16:00:00.000Z",
+  "modifiedAt": "2014-06-24T16:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}]

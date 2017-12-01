@@ -1,0 +1,58 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "expected_proof_completion": [
+    {
+      "proof1": {
+        "desc": "'test1'",
+        "status": "pending"
+      },
+      "proof2": {
+        "desc": "'test1'",
+        "status": "pending"
+      }
+    }
+  ],
+  "current_proof_completed": [
+    {
+      "proof1": {
+        "desc": "'test1'",
+        "status": "pending"
+      },
+      "proof2": {
+        "desc": "'test1'",
+        "status": "pending"
+      }
+    }
+  ],
+  "model_props": [
+    {
+      "model_id": 1,
+      "model_description": "door"
+    }
+  ],
+  "isSendToEth": true,
+  "sendETHAt": "2014-06-25T00:00:00.000Z",
+  "tokenRequired": "true",
+  "tokenFunded": [
+    {
+      "5435545": {
+        "fromAccount": "3454fdsffdsfdsfds44",
+        "toAccount": "dfsfdsf32343443",
+        "unit": 30
+      },
+      "54353444": {
+        "fromAccount": "3454fdsffdsfdsfds44",
+        "toAccount": "dfsfdsf32343443",
+        "unit": 10
+      }
+    }
+  ],
+  "blockNo": 1223,
+  "contract_date": "2014-06-25T00:00:00.000Z",
+  "createdAt": "2014-06-25T00:00:00.000Z",
+  "modifiedAt": "2014-06-25T00:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
+]

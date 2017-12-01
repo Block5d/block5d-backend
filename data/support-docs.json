@@ -1,0 +1,22 @@
+[{
+  "_id": 1,
+  "project_id": 1,
+  "url": "http://localhost:4200/img/test.jpg",
+  "file_type": "jpg",
+  "doc_type": "submission",
+  "modified_date": "1980-01-01T16:00:00.000Z",
+  "created_date": "1980-01-01T16:00:00.000Z",
+  "created_by": "Kenneth,",
+  "modified_by": "Kenneth"
+},
+{
+  "_id": 2,
+  "project_id": 1,
+  "url": "http://localhost:4200/img/test.png",
+  "file_type": "png",
+  "doc_type": "verification",
+  "modified_date": "1980-01-01T16:00:00.000Z",
+  "created_date": "1980-01-01T16:00:00.000Z",
+  "created_by": "Kenneth,",
+  "modified_by": "Kenneth"
+}]

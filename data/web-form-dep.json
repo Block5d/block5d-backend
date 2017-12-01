@@ -1,0 +1,25 @@
+[{
+  "_id": 1,
+  "dep_name": "test",
+  "form_id": 1,
+  "form_field_id": 1,
+  "condition": "$eq",
+  "condition_value": [
+    "C",
+    "D"
+  ],
+  "custom_built_condition": "checkNRIC",
+  "exclude_values": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "include_values": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ]
+}
+]

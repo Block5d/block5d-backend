@@ -1,44 +1,38 @@
 [
-    {
-        "first_name": "",
-        "last_name": "",
-        "identification_no": "",
-        "nationality": "",
-        "job_title": "",
-        "contactNo": "",
-        "projects": [],
-        "company": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    },
-    {
-        "first_name": "",
-        "last_name": "",
-        "identification_no": "",
-        "nationality": "",
-        "job_title": "",
-        "contactNo": "",
-        "projects": [],
-        "company": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    },
-    {
-        "first_name": "",
-        "last_name": "",
-        "identification_no": "",
-        "nationality": "",
-        "job_title": "",
-        "contactNo": "",
-        "projects": [],
-        "company": "",
-        "isEnabled" : true,
-        "modified_date": ISODate("2017-01-15T17:17:43.882Z"),
-        "created_date": ISODate("2017-01-15T17:17:43.882Z")
-
-    }
+{
+  "_id": 1,
+  "first_name": "Kenneth",
+  "last_name": "Phang",
+  "job_title": "Civil Engineer",
+  "contact": {
+	"contact_no": 565654665,
+  	"email": "test@test.com"
+  },
+  "dateOfBirth": "1980-01-02T00:00:00.000Z",
+  "Gender": "M",
+  "provider_type": "Google",
+  "firebase_user_uid": "1eZf46azh3VOOKCCmKtxch8ZOdG3",
+  "modified_date": "1980-01-02T00:00:00.000Z",
+  "created_date": "1980-01-02T00:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+},
+{
+  "_id": 2,
+  "first_name": "Kenneth",
+  "last_name": "Phang",
+  "job_title": "Quantity Surveyor",
+  "contact": {
+	"contact_no": 565654665,
+  	"email": "test@test.com"
+  },
+  "dateOfBirth": "1980-01-02T00:00:00.000Z",
+  "Gender": "M",
+  "provider_type": "Google",
+  "firebase_user_uid": "1eZf46azh3VOOKCCmKtxch8ZOdG3",
+  "modified_date": "1980-01-02T00:00:00.000Z",
+  "created_date": "1980-01-02T00:00:00.000Z",
+  "created_by": "Kenneth",
+  "modified_by": "Kenneth"
+}
 ]
